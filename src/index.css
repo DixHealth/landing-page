@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "urbanist", sans-serif;
+  width: 100dvw;
+  overflow-x: hidden;
+}
+
+@layer base {
+  @font-face {
+    font-family: "urbanist";
+  }
+}
