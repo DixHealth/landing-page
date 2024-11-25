@@ -1,86 +1,65 @@
+"use client";
+
 import React from "react";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { DrawerNavigation } from "./DrawerNavigation";
+import { smoothScroll } from "@/utils";
+import { navItems } from "@/data";
+import { useToast } from "@/hooks/use-toast";
 
 export const Navigation: React.FC = () => {
+  const { toast } = useToast();
+
   return (
-    <nav className="fixed top-0 left-0 w-full  z-50 px-4 py-6">
+    <header className="fixed top-0 left-0 w-full z-50 bg-[rgba(7,7,7,0.64)] backdrop-blur-md px-4 py-6">
       <div className="flex items-center justify-between md:mx-16">
-        <img
-          className="text-neutral-100 text-2xl font-bold"
-          src="/logo-white.svg"
-        />
+        <a href="#hero">
+          <img
+            className="text-neutral-100 text-2xl font-bold cursor-pointer"
+            src="/logo-white.png"
+            alt="Logo"
+          />
+        </a>
         <div className="hidden md:flex flex-1 items-center justify-between">
-          <div className="flex items-center justify-center gap-8 flex-grow">
-            <a href="#pilares" className="text-neutral-100 hover:text-gray-300">
-              Pilares
-            </a>
-            <a
-              href="#nossos-clientes"
-              className="text-neutral-100 hover:text-gray-300"
-            >
-              Clientes
-            </a>
-            <a
-              href="#quem-somos"
-              className="text-neutral-100 hover:text-gray-300"
-            >
-              Quem somos
-            </a>
-          </div>
+          <nav className="flex items-center justify-center gap-8 flex-grow">
+            {navItems.map((item, idx) => (
+              <a
+                key={idx}
+                href={item.link}
+                onClick={() => smoothScroll(item.link)}
+                className="text-neutral-100 hover:text-gray-300"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
           {/* Botão no canto direito */}
           <Button
             variant="outline"
-            className="bg-transparent text-white border-secondary-500 hover:bg-emerald-500 hover:text-white"
+            onClick={() => {
+              toast({
+                title: "Scheduled: Catch up",
+                description: "Friday, February 10, 2023 at 5:57 PM",
+              });
+            }}
+            className="bg-transparent hover:text-white"
           >
             Entre em contato
           </Button>
         </div>
-        {/* Mobile Navigation */}
         <div className="flex items-center gap-4 md:hidden">
           <Button
             variant="outline"
             size="sm"
+            onClick={() => smoothScroll("contact")}
             className="bg-transparent text-white border-secondary-500 hover:bg-emerald-500 hover:text-white"
           >
             Entre em contato
           </Button>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-emerald-500">
-                <Menu className="h-10 w-10 text-secondary-500" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="w-[300px] bg-black/95 border-emerald-500/20"
-            >
-              <nav className="flex flex-col gap-4 mt-8">
-                <a
-                  href="#pilares"
-                  className="text-neutral-100 hover:text-emerald-500 transition-colors px-4 py-2 text-lg"
-                >
-                  Pilares
-                </a>
-                <a
-                  href="#nossos-clientes"
-                  className="text-neutral-100 hover:text-emerald-500 transition-colors px-4 py-2 text-lg"
-                >
-                  Clientes
-                </a>
-                <a
-                  href="#quem-somos"
-                  className="text-neutral-100 hover:text-emerald-500 transition-colors px-4 py-2 text-lg"
-                >
-                  Quem somos
-                </a>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          <DrawerNavigation />
         </div>
       </div>
-    </nav>
+    </header>
   );
 };
