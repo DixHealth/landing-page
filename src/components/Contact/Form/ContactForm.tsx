@@ -46,7 +46,7 @@ export const ContactForm: React.FC = () => {
           subject: values.subject,
           message: values.message,
         },
-        process.env.NEXT_KEY!
+        process.env.NEXT_PUBLIC_KEY!
       );
       toast({
         title: "Mensagem enviada com sucesso!",
