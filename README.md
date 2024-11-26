@@ -1,4 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DixHealth Website
+
+Welcome to the DixHealth website repository. This project is built using [Next.js](https://nextjs.org), a powerful React framework designed for scalable and modern web applications.
+
+## Features
+
+- **Next.js Framework**: Optimized performance, server-side rendering (SSR), and static site generation (SSG).
+- **Modern Design**: Uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to optimize and load the [Geist](https://vercel.com/font) font family.
+- **Fully Responsive**: Designed to deliver a seamless experience across all devices.
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version 18 or later recommended)
+- A package manager like npm, yarn, pnpm, or bun
+
+### Running the Development Server
+
+Clone the repository and install dependencies:
+
+````bash
+git clone https://github.com/your-repo/dixhealth.git
+cd dixhealth
+npm install
+
 
 ## Getting Started
 
@@ -12,7 +39,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
+````
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
