@@ -89,7 +89,7 @@ export const Header: React.FC = () => {
                   smoothScroll(item.link);
                   console.log(item.link);
                 }}
-                className="text-neutral-100 hover:text-neutral-300 cursor-pointer"
+                className="text-neutral-100 hover:text-primary-300 cursor-pointer"
               >
                 {item.label}
               </a>
