@@ -10,14 +10,10 @@ export const Contact: React.FC = () => {
       id="contact"
       className="bg-black min-h-screen overflow-hidden w-full bg-[url('/images/teste.png')] bg-cover flex flex-col justify-center items-center bg-center bg-no-repeat"
     >
-      <div className=" mx-auto px-1 md:px-6 py-16">
+      <div className=" mx-auto px-4 md:px-6 py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center justify-center">
-          <div>
-            <ContactCard />
-          </div>
-          <div>
-            <ContactForm />
-          </div>
+          <ContactCard />
+          <ContactForm />
         </div>
       </div>
     </motion.section>

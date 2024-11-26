@@ -3,6 +3,7 @@ import "./globals.css";
 import { Urbanist } from "next/font/google";
 import { ThemeProvider } from "./provider";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/react";
 
 const urbanist = Urbanist({
   weight: ["400", "500", "600"],
@@ -35,6 +36,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

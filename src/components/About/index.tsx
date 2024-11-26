@@ -26,7 +26,7 @@ export const About: React.FC = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.5 }}
     >
-      <div className="px-1 md:px-6 mx-auto max-w-7xl">
+      <div className="px-4 md:px-6 mx-auto max-w-7xl">
         <motion.div
           className="grid lg:grid-cols-2 gap-8 mb-16"
           variants={containerVariants}

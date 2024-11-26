@@ -1,4 +1,5 @@
 "use client";
+
 import { clients } from "@/data";
 import React from "react";
 import { ClientCard } from "./ClientCard";
@@ -24,8 +25,8 @@ export const Clients: React.FC = () => {
         }}
       ></div>
 
-      <div className=" mx-auto max-w-7xl px-1 md:px-6 flex flex-col items-center md:flex-row relative z-10">
-        <motion.div className="w-full md:w-[50%] md:h-[70vh] md:px-20 flex flex-col justify-center md:items-start text-white p-6">
+      <div className=" mx-auto max-w-7xl px-4 md:px-6 flex flex-col items-center md:flex-row relative z-10">
+        <motion.div className="w-full md:w-[50%] md:h-[70vh] md:px-20 flex flex-col justify-center md:items-start text-white">
           <span className="gradient-text text-subtitle-medium font-normal md:font-semibold ">
             NOSSOS CLIENTES
           </span>
