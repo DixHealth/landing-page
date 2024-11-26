@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
 import { navItems } from "@/data";
 import { smoothScroll } from "@/utils";
+import Image from "next/image";
 
 export const DrawerNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,14 @@ export const DrawerNavigation = () => {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="text-emerald-500 ">
-          <img src="/icon/menu.svg" className=" text-secondary-500" />
+          <Image
+            alt="Menu"
+            width={30}
+            height={30}
+            src="/icon/menu.svg"
+            quality={100}
+            className=" text-secondary-500"
+          />
         </Button>
       </SheetTrigger>
       <SheetContent

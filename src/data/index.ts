@@ -6,7 +6,7 @@ export const navItems = [
 
 export const pillarCards = [
   {
-    icon: "/cloud-icon.svg",
+    icon: "/icon/cloud-icon.svg",
     title: "DixCloud",
     gradientText: "Soluções em cloud sob medida,",
     subtitle:
@@ -14,7 +14,7 @@ export const pillarCards = [
     image: "/images/new-cloud.png",
   },
   {
-    icon: "/biotech.svg",
+    icon: "/icon/biotech.svg",
     title: "DixHealth",
     gradientText: "Soluções inovadoras",
 
@@ -23,55 +23,55 @@ export const pillarCards = [
     image: "/images/omni.png",
   },
   {
-    icon: "/code.svg",
+    icon: "/icon/code.svg",
     title: "DixDevelop",
     gradientText: "Fábrica de software",
 
     subtitle:
       " especializada em saúde, com equipe multidisciplinar e expertise em tecnologias atuais. Inovação e qualidade para transformar o setor de saúde.",
-    image: "/develop.svg",
+    image: "/images/develop.svg",
   },
 ];
 
 export const clients = [
   {
-    name: "Unimed Paranavaí",
-    logo: "/clients/unimed.svg",
+    name: "Unimeds",
+    logo: "/clients/unimed.png",
     className: "bg-white rounded-full p-4",
   },
   {
     name: "Arcelor Mittal",
-    logo: "/clients/arcelor.svg",
+    logo: "/clients/arcelor.png",
     className: "bg-white rounded-full p-4",
   },
   {
     name: "Clinica DOC",
-    logo: "/clients/clinica-doc.svg",
+    logo: "/clients/doc.png",
     className: "bg-white rounded-full p-4",
   },
   {
     name: "FESC",
-    logo: "/clients/fesc.svg",
+    logo: "/clients/fesc.png",
     className: "bg-white rounded-full p-4",
   },
   {
     name: "Healthmap",
-    logo: "/clients/healthmap.svg",
+    logo: "/clients/healthmap.png",
     className: "bg-white rounded-full p-4",
   },
   {
     name: "Hemocard",
-    logo: "/clients/hemocord.svg",
+    logo: "/clients/hemocord.png",
     className: "bg-white rounded-full p-4",
   },
   {
     name: "Hemolab",
-    logo: "/clients/hemolab.svg",
+    logo: "/clients/hemolab.png",
     className: "bg-white rounded-full p-4",
   },
   {
     name: "Vividus",
-    logo: "/clients/vividus.svg",
+    logo: "/clients/vividus.png",
     className: "bg-white rounded-full p-4",
   },
 ];

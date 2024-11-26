@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { handleEmailButtonClick } from "@/utils";
+import Image from "next/image";
 
 const buttonStyle =
   "w-full md:w-96 transition ease-in-out hover:scale-105 flex flex-col items-start md:w-[244px] h-[94px] rounded-[8px] shadow-[4px_4px_10px_rgba(0,0,0,0.3)] border-none bg-[#242424]";
@@ -27,7 +28,13 @@ export const ContactCard: React.FC = () => {
 
       <div className="flex flex-col items-center md:flex-row gap-8">
         <Card className="w-full md:w-[264px] bg-[#242424] border-none backdrop-blur-sm p-6 rounded-lg">
-          <img src="/icon/Phone.svg" />
+          <Image
+            width={32}
+            height={32}
+            alt="icon"
+            src="/icon/Phone.svg"
+            quality={100}
+          />
           <h3 className="flex items-center gap-2 text-subtitle-medium font-normal mt-2 mb-4">
             Telefones para contato:
           </h3>
@@ -44,7 +51,13 @@ export const ContactCard: React.FC = () => {
             className={buttonStyle}
             onClick={handleChatButtonClick}
           >
-            <img src={"/icon/Whatsapp.svg"} />
+            <Image
+              width={32}
+              height={32}
+              alt="icon"
+              src={"/icon/Whatsapp.svg"}
+              quality={100}
+            />
             WhatsApp
           </Button>
 
@@ -53,7 +66,13 @@ export const ContactCard: React.FC = () => {
             className={buttonStyle}
             onClick={handleEmailButtonClick}
           >
-            <img src={"/icon/Email.svg"} />
+            <Image
+              width={32}
+              height={32}
+              alt="icon"
+              src={"/icon/Email.svg"}
+              quality={100}
+            />
             Email
           </Button>
         </div>

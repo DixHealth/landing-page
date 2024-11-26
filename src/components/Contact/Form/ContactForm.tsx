@@ -6,7 +6,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card } from "@/components/ui/card";
 import { Modal } from "@/components/Modal";
 import { formSchema } from "./schema";
-import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -19,51 +18,44 @@ import {
 } from "@/components/ui/form";
 import { initialValues } from "./initialValues";
 import { PrivacyPolicy } from "@/components/PrivacyPolicy";
-import emailjs from "@emailjs/browser";
 import { useToast } from "@/hooks/use-toast";
+import { submitForm } from "@/utils";
+import { FormData } from "./FormData";
 
 export const ContactForm: React.FC = () => {
   const { toast } = useToast();
   const [isSending, setIsSending] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
 
-  type FormData = z.infer<typeof formSchema>;
-
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: initialValues,
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      setIsSending(true);
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_TEMPLATE_ID!,
-        {
-          name: values.name,
-          email: values.email,
-          subject: values.subject,
-          message: values.message,
-        },
-        process.env.NEXT_PUBLIC_KEY!
-      );
-      toast({
-        title: "Mensagem enviada com sucesso!",
-        description: "Em breve entraremos em contato.",
-      });
-      form.reset();
-    } catch (error: unknown) {
-      console.error(error);
-      toast({
-        variant: "destructive",
-        title: "Ops algo deu errado!",
-        description: String(error),
-      });
-    } finally {
-      setIsSending(false);
-    }
-  }
+  const onSubmit = React.useCallback(
+    async (values: FormData) => {
+      try {
+        setIsSending(true);
+        await submitForm(values);
+        toast({
+          title: "Mensagem enviada com sucesso!",
+          description: "Em breve entraremos em contato.",
+        });
+        form.reset();
+      } catch (error: unknown) {
+        console.error(error);
+        toast({
+          variant: "destructive",
+          title: "Ops algo deu errado!",
+          description: String(error),
+        });
+      } finally {
+        setIsSending(false);
+      }
+    },
+    [toast, form]
+  );
+
   const { errors } = form.formState;
 
   return (

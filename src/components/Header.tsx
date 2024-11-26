@@ -12,7 +12,7 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const Navigation: React.FC = () => {
+export const Header: React.FC = () => {
   const headerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll();
 
@@ -73,9 +73,10 @@ export const Navigation: React.FC = () => {
         <a onClick={() => smoothScroll("hero")}>
           <Image
             className="text-neutral-100 text-2xl font-bold cursor-pointer"
-            src="/logo-white.png"
+            src="/logo/logo-white.png"
             alt="Logo"
             width={100}
+            quality={100}
             height={100}
           />
         </a>

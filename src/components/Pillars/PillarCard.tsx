@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "../Modal";
+import Image from "next/image";
 
 interface Props {
   icon: string;
@@ -26,7 +27,13 @@ export const PillarCard: React.FC<Props> = ({
   return (
     <div className="md:w-[364px] mt-12 md:mt-0 ">
       <div className="w-[56px] h-[56px] border border-black flex items-center mb-3">
-        <img src={icon} />
+        <Image
+          alt="icone-pilar"
+          width={56}
+          height={56}
+          src={icon}
+          quality={100}
+        />
       </div>
 
       <div className="mb-3">
@@ -39,10 +46,13 @@ export const PillarCard: React.FC<Props> = ({
         <span className="text-subtitle-medium font-normal">{subtitle}</span>
       </div>
       <div className="w-full  flex items-start justify-start">
-        <img
+        <Image
+          width={500}
+          height={200}
+          quality={100}
           src={image}
-          alt="Tencent Cloud"
-          className="object-contain  rounded-md cursor-pointer"
+          alt={title}
+          className="object-contain rounded-md cursor-pointer"
           onClick={handleImageClick}
         />
       </div>
@@ -50,9 +60,12 @@ export const PillarCard: React.FC<Props> = ({
       {isModalOpen && (
         <Modal onOpenChange={setIsModalOpen} open={isModalOpen}>
           <div className="p-4 flex justify-center items-center">
-            <img
+            <Image
+              width={1000}
+              height={700}
               src={image}
               alt={title}
+              quality={100}
               className="max-w-full max-h-screen rounded-md"
             />
           </div>
