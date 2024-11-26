@@ -19,8 +19,12 @@ import {
 } from "@/components/ui/form";
 import { initialValues } from "./initialValues";
 import { PrivacyPolicy } from "@/components/PrivacyPolicy";
+import emailjs from "@emailjs/browser";
+import { useToast } from "@/hooks/use-toast";
 
 export const ContactForm: React.FC = () => {
+  const { toast } = useToast();
+  const [isSending, setIsSending] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
 
   type FormData = z.infer<typeof formSchema>;
@@ -30,8 +34,35 @@ export const ContactForm: React.FC = () => {
     defaultValues: initialValues,
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      setIsSending(true);
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID!,
+        {
+          name: values.name,
+          email: values.email,
+          subject: values.subject,
+          message: values.message,
+        },
+        process.env.NEXT_KEY!
+      );
+      toast({
+        title: "Mensagem enviada com sucesso!",
+        description: "Em breve entraremos em contato.",
+      });
+      form.reset();
+    } catch (error: unknown) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Ops algo deu errado!",
+        description: error,
+      });
+    } finally {
+      setIsSending(false);
+    }
   }
   const { errors } = form.formState;
 
@@ -173,9 +204,19 @@ export const ContactForm: React.FC = () => {
           />
 
           <div className="w-full flex justify-end">
-            <Button type="submit" variant="outline" className="bg-transparent ">
-              Enviar mensagem
-            </Button>
+            {isSending ? (
+              <div className="flex items-center">
+                <div className="loader animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-secondary-500 mr-2"></div>
+              </div>
+            ) : (
+              <Button
+                type="submit"
+                variant="outline"
+                className="bg-transparent"
+              >
+                Enviar mensagem
+              </Button>
+            )}
           </div>
         </form>
       </Form>
