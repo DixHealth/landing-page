@@ -25,10 +25,6 @@ export default function RootLayout({
     <html lang="pt" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body className={` ${urbanist.variable} antialiased`}>
         <ThemeProvider

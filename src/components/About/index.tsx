@@ -61,7 +61,7 @@ export const About: React.FC = () => {
             variants={itemVariants}
           >
             <motion.img
-              src="/images/pexels.svg"
+              src="/images/pexels.png"
               alt="Ambiente de trabalho colaborativo"
               className="object-cover rounded-lg"
             />

@@ -26,7 +26,7 @@ export const smoothScroll = (id: string) => {
   }
 };
 
-export async function submitForm(values: FormData) {
+export const submitForm = async (values: FormData) => {
   return emailjs.send(
     process.env.NEXT_PUBLIC_SERVICE_ID!,
     process.env.NEXT_PUBLIC_TEMPLATE_ID!,
@@ -38,4 +38,4 @@ export async function submitForm(values: FormData) {
     },
     process.env.NEXT_PUBLIC_KEY!
   );
-}
+};

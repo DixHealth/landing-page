@@ -67,7 +67,6 @@ export const Footer: React.FC = () => {
                   quality={100}
                   src="/icon/email-2.svg"
                 />
-
                 <span className="sr-only">Email</span>
               </a>
             </div>
@@ -89,10 +88,6 @@ export const Footer: React.FC = () => {
               </p>
             </div>
           </div>
-        </div>
-
-        <div className="mt-12 w-full flex justify-center items-center mx-auto text-body-small-regular text-neutral-500">
-          <p>Desenvolvido em parceria com Owlux Company Ltda</p>
         </div>
       </div>
     </footer>

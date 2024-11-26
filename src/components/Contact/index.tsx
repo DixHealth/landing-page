@@ -15,7 +15,6 @@ export const Contact: React.FC = () => {
           <div>
             <ContactCard />
           </div>
-
           <div>
             <ContactForm />
           </div>
