@@ -26,10 +26,9 @@ export const pillarCards = [
     icon: "/icon/code.svg",
     title: "DixDevelop",
     gradientText: "Fábrica de software",
-
     subtitle:
       " especializada em saúde, com equipe multidisciplinar e expertise em tecnologias atuais. Inovação e qualidade para transformar o setor de saúde.",
-    image: "/images/develop.svg",
+    image: "/images/develop.png",
   },
 ];
 
