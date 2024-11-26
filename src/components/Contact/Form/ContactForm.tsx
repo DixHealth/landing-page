@@ -58,7 +58,7 @@ export const ContactForm: React.FC = () => {
       toast({
         variant: "destructive",
         title: "Ops algo deu errado!",
-        description: error,
+        description: String(error),
       });
     } finally {
       setIsSending(false);
