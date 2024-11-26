@@ -12,7 +12,8 @@ const urbanist = Urbanist({
 
 export const metadata: Metadata = {
   title: "Dix Health",
-  description: "",
+  description:
+    "Especialista em Cloud, BI, integração de sistemas e desenvolvimento",
 };
 
 export default function RootLayout({

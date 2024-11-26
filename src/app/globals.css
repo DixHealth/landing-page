@@ -98,6 +98,19 @@ body {
     border-image-slice: 1;
   }
 
+  .gradient-text {
+    background: linear-gradient(
+      90deg,
+      #3aa0ea 0%,
+      #69f88c 79.67%,
+      rgba(255, 255, 255, 0.8) 98.67%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+
   .nav-height {
     @apply h-[calc(100vh-0px)];
   }

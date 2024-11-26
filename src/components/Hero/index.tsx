@@ -11,7 +11,6 @@ import { TextGenerateEffect } from "../TextGenerateEffect";
 
 export const Hero: React.FC = () => {
   useGSAP(() => {
-    // gsap.to('#hero', { opacity: 1, delay: 2 })
     gsap.to("#btn", { opacity: 1, y: 0, delay: 2 });
   }, []);
 
@@ -43,21 +42,6 @@ export const Hero: React.FC = () => {
           <div
             id="btn"
             className="flex flex-col items-center opacity-0 translate-y-20"
-
-            // initial={{
-            //   opacity: 0,
-            //   y: 20,
-            // }}
-            // animate={{
-            //   opacity: 1,
-            //   y: 0,
-            //   transition: {
-            //     duration: 0.5,
-            //     delay: 0.2,
-            //     ease: "easeOut",
-            //     once: true,
-            //   },
-            // }}
           >
             <Button
               onClick={() => smoothScroll("contact")}
@@ -68,16 +52,6 @@ export const Hero: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Background Effect */}
-      {/* <div
-        className="fixed inset-0 -z-10"
-        style={{
-          background: "linear-gradient(45deg, #000 0%, #111 100%)",
-          backgroundImage:
-            "radial-gradient(circle at 50% 50%, rgba(0, 100, 255, 0.1) 0%, transparent 60%), radial-gradient(circle at 100% 0%, rgba(255, 0, 255, 0.1) 0%, transparent 50%)",
-        }}
-      /> */}
     </section>
   );
 };

@@ -8,22 +8,27 @@ export const pillarCards = [
   {
     icon: "/cloud-icon.svg",
     title: "DixCloud",
+    gradientText: "Soluções em cloud sob medida,",
     subtitle:
-      "Soluções em cloud sob medida, com migração eficiente e expertise com os principais players do mercado, AWS, Tencent e Huawei, alinhadas às necessidades do seu negócio.",
-    image: "/cloud.svg",
+      " com migração eficiente e expertise com os principais players do mercado, AWS, Tencent e Huawei, alinhadas às necessidades do seu negócio.",
+    image: "/images/new-cloud.png",
   },
   {
     icon: "/biotech.svg",
     title: "DixHealth",
+    gradientText: "Soluções inovadoras",
+
     subtitle:
-      "Fábrica de softwares especializada em saúde, com equipe multidisciplinar e expertise em tecnologias atuais. Inovação e qualidade para transformar o setor de saúde.",
-    image: "/attendance.svg",
+      " especializada em saúde, com equipe multidisciplinar e expertise em tecnologias atuais. Inovação e qualidade para transformar o setor de saúde.",
+    image: "/images/omni.png",
   },
   {
     icon: "/code.svg",
     title: "DixDevelop",
+    gradientText: "Fábrica de software",
+
     subtitle:
-      "Fábrica de softwares especializada em saúde, com equipe multidisciplinar e expertise em tecnologias atuais. Inovação e qualidade para transformar o setor de saúde.",
+      " especializada em saúde, com equipe multidisciplinar e expertise em tecnologias atuais. Inovação e qualidade para transformar o setor de saúde.",
     image: "/develop.svg",
   },
 ];

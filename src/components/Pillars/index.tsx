@@ -19,12 +19,14 @@ export const Pillars: React.FC = () => {
 
   return (
     <section
-      className="bg-black h-full w-screen overflow-hidden common-padding "
-      id="pillars"
+      className="bg-black min-h-screen flex flex-col justify-center items-center md:flex-row w-screen overflow-hidden "
+      id="#pillars"
     >
       <div className="mx-auto px-1 md:px-6 ">
-        <div className="mb-8 space-y-6 ">
-          <img src="/PILARES.png" className="lg:mb-0 mb-5 " />
+        <div className="gap-4 flex flex-col mb-6">
+          <span className="gradient-text text-subtitle-medium font-normal md:font-semibold ">
+            PILARES
+          </span>
           <h2 className="text-white text-heading font-normal md:text-[64px] ">
             Como podemos te ajudar
           </h2>
@@ -39,6 +41,7 @@ export const Pillars: React.FC = () => {
               title={pillar.title}
               subtitle={pillar.subtitle}
               image={pillar.image}
+              gradientText={pillar.gradientText}
             />
           ))}
         </div>
