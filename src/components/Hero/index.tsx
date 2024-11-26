@@ -17,7 +17,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       className="nav-height w-full flex items-center  "
-      id="hero"
+      id="#hero"
       style={{
         background: `radial-gradient(
             40.6% 40.6% at 28.4% 46.87%,
@@ -38,7 +38,6 @@ export const Hero: React.FC = () => {
             expansões."
             className="text-white text-title-medium md:text-title-medium max-w-2xl mx-auto"
           />
-
           <div
             id="btn"
             className="flex flex-col items-center opacity-0 translate-y-20"

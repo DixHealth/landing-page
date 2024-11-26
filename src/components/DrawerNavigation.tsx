@@ -28,11 +28,13 @@ export const DrawerNavigation = () => {
       >
         <nav className="flex flex-col gap-4 ">
           {navItems.map((item, idx) => (
-            <div className="" key={idx}>
+            <div key={idx}>
               <a
-                href={item.link}
-                onClick={() => smoothScroll(item.link)}
-                className="w-[200px]  text-neutral-100  hover:text-neutral-500 flex items-center justify-center transition-colors px-4 text-lg"
+                onClick={() => {
+                  smoothScroll(item.link);
+                  setIsOpen(false);
+                }}
+                className="w-[200px]  text-neutral-100 cursor-pointer hover:text-primary-500 flex items-center justify-center transition-colors px-4 text-lg"
               >
                 {item.label}
               </a>

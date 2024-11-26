@@ -70,7 +70,7 @@ export const Header: React.FC = () => {
       className="fixed top-0 left-0 w-full z-50 bg-[rgba(7,7,7,0.64)] backdrop-blur-md px-4 py-4"
     >
       <div className="flex items-center justify-between md:mx-16">
-        <a onClick={() => smoothScroll("hero")}>
+        <a onClick={() => smoothScroll("#hero")}>
           <Image
             className="text-neutral-100 text-2xl font-bold cursor-pointer"
             src="/logo/logo-white.png"
