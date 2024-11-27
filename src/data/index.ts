@@ -34,8 +34,8 @@ export const pillarCards = [
 
 export const clients = [
   {
-    name: "Unimeds",
-    logo: "/clients/unimed.png",
+    name: "Unimed",
+    logo: "/clients/new-unimed.png",
     className: "bg-white rounded-full p-4",
   },
   {
