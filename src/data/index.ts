@@ -8,9 +8,9 @@ export const pillarCards = [
   {
     icon: "/icon/cloud-icon.svg",
     title: "DixCloud",
-    gradientText: "Soluções em cloud sob medida,",
+    gradientText: "Soluções em cloud",
     subtitle:
-      " com migração eficiente e expertise com os principais players do mercado, AWS, Tencent e Huawei, alinhadas às necessidades do seu negócio.",
+      "sob medida com migração eficiente e expertise com os principais players do mercado, AWS, Tencent e Huawei, alinhadas às necessidades do seu negócio.",
     image: "/images/dixcloud.png",
   },
   {
@@ -19,7 +19,7 @@ export const pillarCards = [
     gradientText: "Soluções inovadoras",
 
     subtitle:
-      " especializada em saúde, com equipe multidisciplinar e expertise em tecnologias atuais. Inovação e qualidade para transformar o setor de saúde.",
+      "como o HUB de Saúde, responsável por centralizar os dados de saúde, e o DixConnect, que integra múltiplas plataformas de comunicação, unindo tecnologia e expertise para otimizar resultados.",
     image: "/images/dixhealth.png",
   },
   {

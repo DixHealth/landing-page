@@ -43,7 +43,7 @@ export const PillarCard: React.FC<Props> = ({
         {gradientText}
       </span>
       <div className="mb-12">
-        <span className="text-subtitle-medium font-normal">{subtitle}</span>
+        <span className="text-subtitle-small font-normal">{subtitle}</span>
       </div>
       <div className="w-full h-[267.27px] flex items-start justify-start">
         <Image
