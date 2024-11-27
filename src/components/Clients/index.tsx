@@ -42,7 +42,7 @@ export const Clients: React.FC = () => {
           <h3 className="text-subtitle-medium text-neutral-500 mb-4 mt-4">
             Principais Clientes
           </h3>
-          <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-8 justify-center items-center">
+          <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-10 justify-center items-center">
             {clients.map((client, idx) => (
               <ClientCard client={client} index={idx} key={idx} />
             ))}

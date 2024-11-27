@@ -45,14 +45,14 @@ export const PillarCard: React.FC<Props> = ({
       <div className="mb-12">
         <span className="text-subtitle-medium font-normal">{subtitle}</span>
       </div>
-      <div className="w-full  flex items-start justify-start">
+      <div className="w-full h-[267.27px] flex items-start justify-start">
         <Image
           width={500}
-          height={200}
+          height={300}
           quality={100}
           src={image}
           alt={title}
-          className="object-contain rounded-md cursor-pointer"
+          className="rounded-md cursor-pointer object-contain"
           onClick={handleImageClick}
         />
       </div>

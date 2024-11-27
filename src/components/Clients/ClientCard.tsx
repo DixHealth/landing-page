@@ -23,7 +23,7 @@ export const ClientCard: React.FC<Props> = ({ client, index }) => {
   return (
     <motion.div
       ref={ref}
-      className="w-full flex justify-center flex-col items-center gap-4"
+      className="w-[167px] h-[184px] flex justify-center flex-col items-center gap-4"
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.2, duration: 0.5 }}
