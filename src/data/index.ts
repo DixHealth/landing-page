@@ -59,7 +59,7 @@ export const clients = [
     className: "bg-white rounded-full p-4",
   },
   {
-    name: "Hemocard",
+    name: "Hemocord",
     logo: "/clients/hemocord.png",
     className: "bg-white rounded-full p-4",
   },
