@@ -151,7 +151,7 @@ export const ContactForm: React.FC = () => {
                 <FormControl>
                   <Textarea
                     placeholder="Conte um pouco sobre como podemos te ajudar"
-                    className={`
+                    className={`resize-none
                       bg-neutral-800/60 rounded-lg text-white placeholder:text-neutral-500 min-h-[120px]
                       ${
                         errors.message
