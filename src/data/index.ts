@@ -40,7 +40,7 @@ export const clients = [
   },
   {
     name: "Unimed",
-    logo: "/clients/new-unimed.png",
+    logo: "/clients/unimed.png",
     className: "bg-white rounded-full p-4",
   },
   {
