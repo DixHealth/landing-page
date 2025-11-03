@@ -39,7 +39,7 @@ export const ContactCard: React.FC = () => {
             Telefones para contato:
           </h3>
           <div className="space-y-2 text-gray-300">
-            <p>(51) 3303 3818</p>
+            <p>(27) 3441 2622</p>
             <p>(51) 9 8598 0078</p>
             <p>(55) 9 9698 0112</p>
           </div>
