@@ -10,6 +10,7 @@ import { Cloud } from "@/components/Cloud";
 import { About } from "@/components/About";
 import { Products } from "@/components/Products";
 import { FinalCta } from "@/components/FinalCta";
+import { GroupQa } from "@/components/GroupQa";
 import { Footer } from "@/components/Footer";
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
       <Clients />
       <About />
       <FinalCta />
+      <GroupQa />
       <Footer />
       <OmnixCorner />
     </main>

@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 /**
  * Aviso de cookies (LGPD).
  *
- * - Três caminhos com o mesmo peso: aceitar todos, só os essenciais, personalizar.
+ * - Aceitar e recusar têm o mesmo destaque; personalizar fica ao lado.
  * - Nada opcional roda antes da escolha: a medição de acessos só é carregada
  *   depois do consentimento.
  * - A escolha pode ser revista a qualquer momento em "Preferências de cookies",
@@ -27,6 +27,7 @@ import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "dix-cookie-consent";
 const VERSION = 1; // mude para perguntar de novo quando as categorias mudarem
+const MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
 
 export const OPEN_COOKIES_EVENT = "dix:open-cookies";
 export const OPEN_PRIVACY_EVENT = "dix:open-privacy";
@@ -38,7 +39,10 @@ const read = (): Consent | null => {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const c = JSON.parse(raw) as Consent;
-    return c.v === VERSION ? c : null;
+    if (c.v !== VERSION) return null;
+    // a escolha vale por 12 meses; depois disso, perguntamos de novo
+    const age = Date.now() - new Date(c.date).getTime();
+    return age >= 0 && age < MAX_AGE_MS ? c : null;
   } catch {
     return null;
   }
@@ -149,7 +153,7 @@ export const CookieConsent: React.FC = () => {
                   onClick={() => window.dispatchEvent(new Event(OPEN_PRIVACY_EVENT))}
                   className="text-fg underline decoration-accent underline-offset-4 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  Política de Privacidade
+                  Privacidade e Termos de Uso
                 </button>
               </p>
             </div>
@@ -157,7 +161,8 @@ export const CookieConsent: React.FC = () => {
               <Button variant="outline" className="rounded-full" onClick={() => setPrefsOpen(true)}>
                 Personalizar
               </Button>
-              <Button variant="outline" className="rounded-full" onClick={() => save(false)}>
+              {/* recusar e aceitar com o mesmo destaque (guia de cookies da ANPD) */}
+              <Button className="rounded-full" onClick={() => save(false)}>
                 Só os essenciais
               </Button>
               <Button className="rounded-full" onClick={() => save(true)}>
@@ -197,7 +202,8 @@ export const CookieConsent: React.FC = () => {
                 </p>
                 <p className="mt-1 text-body-small-regular text-fg-muted">
                   Contam visitas e páginas mais vistas, de forma agregada,
-                  para a gente melhorar o site.
+                  para a gente melhorar o site. A medição é feita pela
+                  Vercel, que hospeda o site, sem cookies de publicidade.
                 </p>
               </div>
               <Switch checked={analytics} onChange={setAnalytics} labelledBy="ck-analise" />

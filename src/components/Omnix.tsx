@@ -205,6 +205,23 @@ export const Omnix: React.FC = () => {
           ))}
         </ul>
 
+        <p className="mt-6 text-caption-regular text-[#8aaaac]">
+          Telas ilustrativas. Pacientes e dados fictícios.
+        </p>
+
+        {/* Limite da IA: apoio, nunca decisão */}
+        <div className="mt-10 flex flex-col gap-3 rounded-[18px] border border-[#1fe1a7]/40 bg-[#061c23]/60 p-6 md:flex-row md:items-center md:gap-8 md:p-7">
+          <p className="shrink-0 font-display text-[22px] font-extrabold leading-tight text-white md:text-[26px]">
+            A decisão é sempre{" "}
+            <span className="omnix-grad">do profissional.</span>
+          </p>
+          <p className="text-body-medium-regular text-[#c9e2de]">
+            A OMNIX resume, sugere e avisa. Ela não toma decisões clínicas nem
+            executa nada por conta própria: cada sugestão só vale depois que o
+            profissional de saúde revisa e confirma.
+          </p>
+        </div>
+
         {/* Mais */}
         <div className="mt-14 grid gap-px overflow-hidden rounded-[18px] bg-[#7ef0d4]/15 ring-1 ring-[#7ef0d4]/15 md:grid-cols-3">
           {omnixExtras.map((e, i) => (

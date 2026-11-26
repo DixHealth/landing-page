@@ -1,5 +1,5 @@
 import React from "react";
-import { contactEmail } from "@/data";
+import { contactEmail, whatsappLink, whatsappMessages } from "@/data";
 import { OPEN_COOKIES_EVENT } from "../CookieConsent";
 
 /**
@@ -10,9 +10,7 @@ import { OPEN_COOKIES_EVENT } from "../CookieConsent";
  * direitos do titular e canal de atendimento.
  *
  * REVISAR COM O JURÍDICO antes de publicar. Pontos que dependem da Dix:
- *  - nome do encarregado (DPO), se houver um nomeado;
- *  - provedores realmente usados (hospedagem, medição de acessos);
- *  - prazos de guarda dos contatos comerciais.
+ *  - contrato e plano da Vercel (transferência internacional de dados).
  */
 
 const UPDATED = "novembro de 2026";
@@ -33,12 +31,36 @@ const List = ({ items }: { items: React.ReactNode[] }) => (
 const B = ({ children }: { children: React.ReactNode }) => (
   <strong className="font-bold text-fg">{children}</strong>
 );
+const linkClass = "text-fg underline decoration-accent underline-offset-4 hover:text-accent";
+
+/** Encarregado pelo tratamento de dados pessoais (LGPD, art. 41). */
+const dpo = {
+  name: "João Gonçalves",
+  company: "HDPO - Consultoria LTDA",
+  email: "joaogoncalves@hdpo.com.br",
+  phone: "(31) 9 9161-1736",
+  tel: "+5531991611736",
+};
+
 const Mail = () => (
-  <a
-    href={`mailto:${contactEmail}`}
-    className="text-fg underline decoration-accent underline-offset-4 hover:text-accent"
-  >
+  <a href={`mailto:${contactEmail}`} className={linkClass}>
     {contactEmail}
+  </a>
+);
+const DataWhatsApp = () => (
+  <a
+    href={whatsappLink(whatsappMessages.dados)}
+    target="_blank"
+    rel="noopener noreferrer"
+    className={linkClass}
+  >
+    WhatsApp da Dix
+    <span className="sr-only"> (abre em nova aba)</span>
+  </a>
+);
+const DpoMail = () => (
+  <a href={`mailto:${dpo.email}`} className={linkClass}>
+    {dpo.email}
   </a>
 );
 
@@ -55,13 +77,33 @@ export const PrivacyPolicy: React.FC = () => {
 
       <H>1. Quem é responsável pelos seus dados</H>
       <P>
-        O controlador é a <B>DixHealth</B>, CNPJ 39.336.761/0001-54, com sede
-        na Rod. do Sol, 2780, Sala 908, Praia de Itaparica, Vila Velha – ES.
+        O controlador é a{" "}
+        <B>Dixhealth Desenvolvimento e Manutenção de Sistemas de Tecnologia LTDA</B>{" "}
+        (DixHealth), CNPJ 39.336.761/0001-54, com sede na Rod. do Sol, 2780,
+        Sala 908, Praia de Itaparica, Vila Velha – ES.
       </P>
       <P>
-        Para falar com o encarregado pelo tratamento de dados pessoais, ou
-        para qualquer assunto desta política, escreva para <Mail />.
+        O encarregado pelo tratamento de dados pessoais (DPO) é a{" "}
+        <B>{dpo.company}</B>, representada por <B>{dpo.name}</B>. É com ele
+        que você fala sobre os seus dados e sobre esta política:
       </P>
+      <List
+        items={[
+          <>
+            E-mail: <DpoMail />
+          </>,
+          <>
+            Telefone:{" "}
+            <a href={`tel:${dpo.tel}`} className={linkClass}>
+              {dpo.phone}
+            </a>
+          </>,
+          <>
+            <DataWhatsApp />: também recebemos por lá os pedidos sobre os
+            seus dados.
+          </>,
+        ]}
+      />
 
       <H>2. Quais dados tratamos</H>
       <List
@@ -73,42 +115,51 @@ export const PrivacyPolicy: React.FC = () => {
             tem formulário e não pede cadastro.
           </>,
           <>
-            <B>Dados de navegação.</B> Somente com a sua permissão, medimos
-            visitas de forma agregada: páginas vistas, site de origem, tipo de
-            aparelho e de navegador e país aproximado. Essas informações não
-            identificam você.
+            <B>Dados de navegação.</B> Só com a sua permissão, medimos as
+            visitas: páginas vistas, site de origem, tipo de aparelho,
+            navegador e localização aproximada (país e, às vezes, estado e
+            cidade). A medição não usa cookies. Para não contar a mesma visita
+            duas vezes, o fornecedor cria um código temporário a partir dos
+            dados da conexão e o descarta em até 24 horas. Não usamos essas
+            informações para identificar você.
           </>,
           <>
-            <B>Registros de acesso.</B> O provedor de hospedagem registra
-            endereço IP, data e hora de cada acesso, como exige o Marco Civil
-            da Internet (Lei nº 12.965/2014).
+            <B>Registros de acesso.</B> O nosso provedor de hospedagem, a
+            Vercel, registra endereço IP, data e hora de cada acesso para
+            entregar as páginas e proteger o site contra ataques. Esses
+            registros ficam guardados pelo prazo do plano que contratamos
+            com a Vercel.
           </>,
         ]}
       />
       <P>
         Não pedimos dados pessoais sensíveis. Por favor, não envie dados de
-        saúde, seus ou de pacientes, pelos canais de contato do site.
+        saúde, seus ou de pacientes, pelos canais de contato do site. Se isso
+        acontecer, usaremos a informação só para responder e a apagaremos em
+        seguida.
       </P>
 
       <H>3. Para que usamos e com qual base legal</H>
       <List
         items={[
           <>
-            <B>Responder ao seu contato e apresentar propostas:</B>{" "}
-            procedimentos preliminares a um contrato, a seu pedido (LGPD, art.
-            7º, V), e legítimo interesse (art. 7º, IX).
+            <B>Responder ao seu contato e apresentar propostas:</B> legítimo
+            interesse (LGPD, art. 7º, IX), porque foi você quem nos procurou.
+            Se você contrata em seu próprio nome, a base é a preparação de um
+            contrato a seu pedido (art. 7º, V).
+          </>,
+          <>
+            <B>Manter contato comercial depois do primeiro atendimento:</B>{" "}
+            legítimo interesse (art. 7º, IX). Você pode pedir para parar a
+            qualquer momento.
           </>,
           <>
             <B>Medir o uso do site para melhorá-lo:</B> o seu consentimento
             (art. 7º, I), que pode ser retirado a qualquer momento.
           </>,
           <>
-            <B>Guardar registros de acesso:</B> cumprimento de obrigação legal
-            (art. 7º, II).
-          </>,
-          <>
-            <B>Manter o site seguro e prevenir fraudes:</B> legítimo interesse
-            (art. 7º, IX).
+            <B>Registrar acessos e manter o site seguro:</B> legítimo
+            interesse (art. 7º, IX).
           </>,
         ]}
       />
@@ -151,9 +202,9 @@ export const PrivacyPolicy: React.FC = () => {
       <List
         items={[
           <>
-            <B>Prestadores de serviço</B> que operam o site em nosso nome,
-            como hospedagem e medição de acessos, apenas no necessário para
-            prestar o serviço.
+            <B>Vercel Inc. (Estados Unidos).</B> Hospeda o site e faz a
+            medição de acessos em nosso nome, só no necessário para prestar o
+            serviço.
           </>,
           <>
             <B>WhatsApp.</B> Ao clicar nos botões de contato, você é levado ao
@@ -169,17 +220,20 @@ export const PrivacyPolicy: React.FC = () => {
 
       <H>6. Transferência internacional</H>
       <P>
-        Alguns desses prestadores mantêm servidores fora do Brasil. Nesses
-        casos, a transferência segue as hipóteses previstas na LGPD (art. 33)
-        e é feita com fornecedores que adotam garantias de proteção de dados.
+        A hospedagem e a medição de acessos são feitas pela Vercel Inc.,
+        empresa dos Estados Unidos. Por isso, os registros de acesso e os
+        dados de medição podem ser processados nos Estados Unidos. O WhatsApp,
+        da Meta, também processa dados fora do Brasil, conforme a política de
+        privacidade dele. Para saber mais sobre essas transferências, fale
+        com o encarregado.
       </P>
 
       <H>7. Por quanto tempo guardamos</H>
       <List
         items={[
-          "Mensagens e dados de contato: pelo tempo necessário para atender ao seu pedido e manter o relacionamento comercial, e depois pelos prazos exigidos em lei.",
-          "Registros de acesso: pelo prazo exigido em lei.",
-          "Sua escolha de cookies: fica no seu navegador até você apagá-la ou até mudarmos as categorias.",
+          "Mensagens e dados de contato: enquanto durar a conversa comercial e por até 2 anos depois do último contato. Se você virar cliente, valem os prazos do contrato e da lei. Você pode pedir a exclusão antes disso.",
+          "Registros de acesso: pelo prazo do plano que contratamos com a Vercel, nosso provedor de hospedagem.",
+          "Sua escolha de cookies: fica no seu navegador por até 12 meses, até você apagá-la ou até mudarmos as categorias. Depois disso, perguntamos de novo.",
         ]}
       />
 
@@ -194,14 +248,16 @@ export const PrivacyPolicy: React.FC = () => {
           "a eliminação dos dados tratados com o seu consentimento;",
           "a informação sobre com quem compartilhamos os seus dados;",
           "a informação sobre a possibilidade de não consentir e as consequências disso;",
-          "a revogação do consentimento.",
+          "a revogação do consentimento;",
+          "a oposição a um tratamento feito com base em legítimo interesse, se você entender que ele não respeita a lei.",
         ]}
       />
       <P>
-        Para exercer esses direitos, escreva para <Mail />. Podemos pedir
-        informações para confirmar a sua identidade, e respondemos nos prazos
-        da lei. Você também pode apresentar reclamação à Autoridade Nacional
-        de Proteção de Dados (ANPD).
+        Para exercer esses direitos, escreva para o encarregado, em{" "}
+        <DpoMail />, ou chame no <DataWhatsApp />. O pedido é gratuito. Podemos pedir só o necessário para
+        confirmar a sua identidade. Respondemos em até 15 dias. Você também
+        pode apresentar reclamação à Autoridade Nacional de Proteção de Dados
+        (ANPD).
       </P>
 
       <H>9. Segurança</H>
@@ -224,6 +280,9 @@ export const PrivacyPolicy: React.FC = () => {
         Podemos atualizar esta política para refletir mudanças no site ou na
         legislação. A versão em vigor é sempre a publicada aqui, com a data
         da última atualização no topo.
+        Se a mudança afetar algo que depende da sua
+        permissão, como a medição de acessos, vamos perguntar de novo antes
+        de continuar.
       </P>
 
       <h3 className="mt-10 border-t border-border pt-8 text-title-small font-bold text-fg">
@@ -232,14 +291,22 @@ export const PrivacyPolicy: React.FC = () => {
 
       <H>Aceitação</H>
       <P>
-        Ao acessar este site, você concorda com estes Termos de Uso. Se não
-        concordar, pedimos que interrompa o uso.
+        O uso deste site segue estes Termos de Uso. Se não concordar com
+        eles, pedimos que não use o site.
       </P>
 
       <H>Objetivo do site</H>
       <P>
         O site apresenta a DixHealth, seus serviços e produtos, e oferece
-        canais de contato.
+        canais de contato. As informações são de apresentação e não são
+        proposta comercial. Preços, prazos e funções de cada produto são
+        definidos em contrato. O conteúdo não é orientação médica.
+      </P>
+      <P>
+        As funções de inteligência artificial apresentadas, como a OMNIX, são
+        de apoio. Elas resumem, sugerem e avisam, mas não tomam decisões
+        clínicas nem executam ações por conta própria: a decisão cabe sempre
+        ao profissional de saúde.
       </P>
 
       <H>Uso permitido</H>
@@ -258,23 +325,35 @@ export const PrivacyPolicy: React.FC = () => {
         reprodução ou o uso sem autorização são proibidos. As telas de produto
         exibidas são ilustrativas e usam dados fictícios.
       </P>
+      <P>
+        As marcas e os logotipos de clientes, parceiros e serviços de
+        terceiros, como o WhatsApp, pertencem aos seus donos. A presença deles
+        aqui não significa patrocínio nem endosso.
+      </P>
 
       <H>Limitação de responsabilidade</H>
       <P>
         A DixHealth se esforça para manter o site disponível e correto, mas
-        não garante funcionamento ininterrupto nem responde por danos
-        decorrentes de falhas de acesso, na medida permitida pela lei.
+        não garante funcionamento ininterrupto. Na medida permitida pela lei,
+        não responde por danos causados por falhas de acesso ou por sites de
+        terceiros para os quais o site aponta, como WhatsApp, LinkedIn e
+        Instagram. Nada aqui limita direitos que a lei garante a você,
+        inclusive os da LGPD e, quando for o caso, os do Código de Defesa do
+        Consumidor.
       </P>
 
-      <H>Alterações e lei aplicável</H>
+      <H>Alterações, lei aplicável e foro</H>
       <P>
         Estes termos podem ser alterados a qualquer momento; as mudanças
         valem a partir da publicação. Eles são regidos pelas leis do Brasil.
+        Fica eleito o foro de Vila Velha – ES, salvo quando a lei garantir a
+        você outro foro, como o do seu domicílio se você for consumidor.
       </P>
 
       <H>Contato</H>
       <P>
-        Dúvidas sobre esta política ou sobre os termos: <Mail />.
+        Dúvidas sobre os termos ou sobre o site: <Mail />. Assuntos de
+        dados pessoais: <DpoMail />.
       </P>
     </div>
   );
