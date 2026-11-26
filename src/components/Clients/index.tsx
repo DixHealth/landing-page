@@ -24,7 +24,7 @@ export const Clients: React.FC = () => {
             </p>
           </div>
 
-          <ul className="mt-10 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-5">
+          <ul className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-border bg-border lg:grid-cols-7">
             {clients.map((client) => (
               <li
                 key={client.name}
