@@ -1,23 +1,12 @@
 import { animate } from "framer-motion";
-import { FormData } from "../components/Contact/Form/FormData";
-import emailjs from "@emailjs/browser";
 
-export const handleEmailButtonClick = () => {
-  const emailAddress = "contato@example.com";
-  const emailSubject = "Gostaria de mais informações";
-  const emailBody = "Olá, gostaria de mais informações sobre seus serviços.";
-
-  const mailtoURL = `outlookmail:${emailAddress}?subject=${encodeURIComponent(
-    emailSubject
-  )}&body=${encodeURIComponent(emailBody)}`;
-
-  window.location.href = mailtoURL;
-};
+const HEADER_OFFSET = 64;
 
 export const smoothScroll = (id: string) => {
-  const section = document.getElementById(id);
+  const section = document.getElementById(id.replace(/^#/, ""));
   if (section) {
-    const offsetTop = section.offsetTop;
+    const offsetTop =
+      section.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
 
     animate(window.scrollY, offsetTop, {
       duration: 0.8,
@@ -26,16 +15,10 @@ export const smoothScroll = (id: string) => {
   }
 };
 
-export const submitForm = async (values: FormData) => {
-  return emailjs.send(
-    process.env.NEXT_PUBLIC_SERVICE_ID!,
-    process.env.NEXT_PUBLIC_TEMPLATE_ID!,
-    {
-      name: values.name,
-      email: values.email,
-      subject: values.subject,
-      message: values.message,
-    },
-    process.env.NEXT_PUBLIC_KEY!
-  );
+export const PREFILL_EVENT = "dix:prefill-subject";
+
+/** Rola até o contato e pré-preenche o assunto do formulário. */
+export const contactAbout = (subject: string) => {
+  window.dispatchEvent(new CustomEvent(PREFILL_EVENT, { detail: subject }));
+  smoothScroll("contact");
 };

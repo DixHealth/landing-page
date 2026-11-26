@@ -1,46 +1,65 @@
 import React, { useState } from "react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Button } from "./ui/button";
-import { navItems } from "@/data";
+import { navItems, whatsappLink, whatsappMessages } from "@/data";
 import { smoothScroll } from "@/utils";
-import Image from "next/image";
 
 export const DrawerNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const go = (id: string) => {
+    setIsOpen(false);
+    // espera o sheet fechar para não brigar com o scroll
+    setTimeout(() => smoothScroll(id), 250);
+  };
+
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="text-emerald-500 ">
-          <Image
-            alt="Menu"
-            width={30}
-            height={30}
-            src="/icon/menu.svg"
-            quality={100}
-            className=" text-secondary-500"
-          />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden"
+          aria-label="Abrir menu"
+        >
+          <Menu className="!size-6" />
         </Button>
       </SheetTrigger>
-      <SheetContent
-        side="right"
-        className="w-[200px] h-44 bg-neutral-900 flex items-center justify-center"
-      >
-        <nav className="flex flex-col gap-4 ">
-          {navItems.map((item, idx) => (
-            <div key={idx}>
-              <a
-                onClick={() => {
-                  smoothScroll(item.link);
-                  setIsOpen(false);
-                }}
-                className="w-[200px]  text-neutral-100 cursor-pointer hover:text-primary-500 flex items-center justify-center transition-colors px-4 text-lg"
-              >
-                {item.label}
-              </a>
-            </div>
+      <SheetContent side="right" className="flex w-72 flex-col gap-8 p-6">
+        <SheetTitle>Menu</SheetTitle>
+        <nav className="flex flex-col gap-1">
+          {navItems.map((item) => (
+            <button
+              key={item.link}
+              onClick={() => go(item.link)}
+              className="rounded-md px-3 py-3 text-left text-subtitle-small text-fg transition-colors hover:bg-surface-raised hover:text-accent"
+            >
+              {item.label}
+              {item.isNew && (
+                <span className="ml-1.5 rounded-sm bg-[#1fe1a7] px-1.5 py-0.5 text-[10px] font-bold uppercase leading-none tracking-[0.08em] text-[#061c23]">
+                  Novo
+                </span>
+              )}
+            </button>
           ))}
         </nav>
+        <Button asChild className="mt-auto w-full">
+          <a
+            href={whatsappLink(whatsappMessages.geral)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+          >
+            Fale com um especialista
+            <span className="sr-only"> (abre o WhatsApp em nova aba)</span>
+          </a>
+        </Button>
       </SheetContent>
     </Sheet>
   );

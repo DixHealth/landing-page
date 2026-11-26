@@ -1,24 +1,31 @@
 "use client";
 
-import { About } from "@/components/About";
-import { Clients } from "@/components/Clients";
-import { Footer } from "@/components/Footer";
-import { Pillars } from "@/components/Pillars";
-import { Contact } from "@/components/Contact";
 import React from "react";
-import { Hero } from "@/components/Hero";
 import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { Omnix, OmnixCorner } from "@/components/Omnix";
+import { Clients } from "@/components/Clients";
+import { SoftwareHouse } from "@/components/SoftwareHouse";
+import { Cloud } from "@/components/Cloud";
+import { About } from "@/components/About";
+import { Products } from "@/components/Products";
+import { FinalCta } from "@/components/FinalCta";
+import { Footer } from "@/components/Footer";
 
 const Home = () => {
   return (
-    <main className="relative w-screen  flex justify-center items-center flex-col overflow-hidden mx-auto md:px-0  ">
+    <main className="relative flex w-full flex-col overflow-hidden">
       <Header />
       <Hero />
-      <Pillars />
+      <Omnix />
+      <SoftwareHouse />
+      <Cloud />
+      <Products />
       <Clients />
       <About />
-      <Contact />
+      <FinalCta />
       <Footer />
+      <OmnixCorner />
     </main>
   );
 };

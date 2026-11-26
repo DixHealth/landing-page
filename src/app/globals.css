@@ -2,73 +2,298 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600&display=swap");
+/*
+ * Tokens semânticos (canais RGB) sobre as escalas do Omni.
+ *  - :root  → Opção 1 · Omni puro (claro)
+ *  - .dark  → Opção 3 · Híbrido (escuro + gradientes)
+ * Comentários indicam o token do Omni de origem.
+ */
+@layer base {
+  :root {
+    --radius: 0.5rem;
 
-body {
-  font-family: "Urbanist", sans-serif;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-smooth: always;
+    --bg: 248 248 248;               /* neutral-100 */
+    --bg-subtle: 238 240 240;        /* neutral-200 */
+    --surface: 255 255 255;          /* white */
+    --surface-raised: 238 240 240;   /* neutral-200 */
+    --fg: 41 42 43;                  /* neutral-900 */
+    --fg-muted: 88 95 100;           /* neutral-700 */
+    --fg-subtle: 108 116 119;        /* neutral-600 */
+    --border: 227 229 229;           /* neutral-300 */
+    --border-strong: 191 191 191;    /* neutral-400 */
+    --accent: 14 119 145;            /* primary-500 (5,16:1 sobre branco) */
+    --accent-soft: 204 249 245;      /* primary-100 */
+    --cta: 7 70 104;                 /* primary-700 */
+    --cta-hover: 4 50 84;            /* primary-800 */
+    --cta-fg: 252 252 252;           /* neutral-50 */
+    --ring: 14 119 145;              /* primary-500 */
+    --field: 255 255 255;
+
+    --gradient-brand: linear-gradient(90deg, #3cadbd 0%, #53ecb0 80%); /* primary-400 → secondary-400 */
+    --scrollbar-track: #dadde0;
+    --scrollbar-thumb: #999d9f;
+    --scrollbar-hover: #6c7477;
+
+    color-scheme: light;
+  }
+
+  .dark {
+    --bg: 0 0 0;                     /* black */
+    --bg-subtle: 0 0 0;              /* black */
+    --surface: 25 25 25;             /* dark-600 */
+    --surface-raised: 41 42 43;      /* neutral-900 */
+    --fg: 248 248 248;               /* neutral-100 */
+    --fg-muted: 191 191 191;         /* neutral-400 */
+    --fg-subtle: 153 157 159;        /* neutral-500 */
+    --border: 64 70 74;              /* neutral-800 */
+    --border-strong: 88 95 100;      /* neutral-700 */
+    --accent: 83 236 176;            /* secondary-400 (só sobre escuro) */
+    --accent-soft: 5 98 108;         /* secondary-900 */
+    --cta: 31 225 167;               /* secondary-500 (12,4:1 com preto) */
+    --cta-hover: 83 236 176;         /* secondary-400 */
+    --cta-fg: 41 42 43;              /* neutral-900 */
+    --ring: 31 225 167;              /* secondary-500 */
+    --field: 41 42 43;               /* neutral-900 */
+
+    --scrollbar-track: #191919;
+    --scrollbar-thumb: #40464a;
+    --scrollbar-hover: #585f64;
+
+    color-scheme: dark;
+  }
+
+  /* Opção "Vídeos" · identidade dos vídeos da Dix / OMNIX (teal escuro + verde-água) */
+  .video {
+    --radius: 0.875rem;
+
+    --bg: 7 34 43;                   /* #07222b */
+    --bg-subtle: 6 28 35;            /* #061c23 */
+    --surface: 11 46 56;             /* #0b2e38 */
+    --surface-raised: 15 58 70;      /* #0f3a46 */
+    --fg: 255 255 255;
+    --fg-muted: 201 226 222;
+    --fg-subtle: 138 170 172;
+    --border: 27 74 84;
+    --border-strong: 46 110 115;     /* #2e6e73 */
+    --accent: 31 225 167;            /* #1fe1a7 */
+    --accent-soft: 15 58 70;
+    --cta: 31 225 167;
+    --cta-hover: 126 240 212;        /* #7ef0d4 */
+    --cta-fg: 6 28 35;
+    --ring: 31 225 167;
+    --field: 15 58 70;
+
+    --gradient-brand: linear-gradient(100deg, #1fe1a7 0%, #7ef0d4 60%, #1fe1a7 100%);
+    --scrollbar-track: #061c23;
+    --scrollbar-thumb: #1b4a54;
+    --scrollbar-hover: #2e6e73;
+
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-accent text-white;
+  }
 }
 
 @layer utilities {
-  .custom-border-gradient {
-    border-width: 2px;
-    border-image-source: linear-gradient(
-      92.98deg,
-      #69f88c 3.17%,
-      #3aa0ea 77.93%,
-      rgba(255, 255, 255, 0.24) 95.68%
-    );
-    border-image-slice: 1;
+  /* Destaque de marca: sólido no Omni puro, gradiente no híbrido */
+  .text-brand {
+    color: rgb(var(--accent));
   }
-
-  .gradient-text {
-    background: linear-gradient(
-      90deg,
-      #3aa0ea 0%,
-      #69f88c 79.67%,
-      rgba(255, 255, 255, 0.8) 98.67%
-    );
+  :is(.dark, .video) .text-brand {
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 
-  .nav-height {
-    @apply h-[calc(100vh-0px)];
+  /* Borda de card: neutra no Omni puro, gradiente no híbrido */
+  .border-brand {
+    border: 1px solid rgb(var(--border));
   }
-  .common-padding {
-    @apply sm:py-32 py-10 sm:px-10 px-5;
+  :is(.dark, .video) .border-brand {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(rgb(var(--surface)), rgb(var(--surface))) padding-box,
+      linear-gradient(92deg, #3cadbd 0%, #53ecb0 75%, rgba(255, 255, 255, 0.2) 100%) border-box;
+  }
+
+  /* Fundo do hero: diagonal do Omni (login) no claro; imagem da marca no escuro */
+  /* Gradiente só no híbrido (no Omni puro o texto fica na cor normal) */
+  :is(.dark, .video) .text-brand-hybrid {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .bg-hero {
+    background: rgb(var(--bg));
+  }
+
+  /* Título de destaque: Lato Black, tracking apertado */
+  .display {
+    font-weight: 900;
+    letter-spacing: -0.035em;
+  }
+
+  /* Rótulo de seção em caixinha */
+  .tag {
+    @apply inline-flex items-center rounded-sm border border-current px-2 py-0.5 text-caption-bold uppercase tracking-[0.08em];
+  }
+
+  /* Textura de fundo com a marca (seções profundas) */
+  .ascii-bg {
+    background-color: #022445; /* primary-900 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='44'%3E%3Ctext x='0' y='16' font-family='monospace' font-size='12' fill='%2365d8de' fill-opacity='0.09'%3E::dix::health::cloud%3C/text%3E%3Ctext x='-70' y='38' font-family='monospace' font-size='12' fill='%2365d8de' fill-opacity='0.06'%3E....dix::develop::dix::%3C/text%3E%3C/svg%3E");
+  }
+
+  /* Grade de pontos (fundo do diagrama do hero) */
+  .dot-grid {
+    background-image: radial-gradient(rgb(var(--border-strong) / 0.6) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  :is(.dark, .video) .bg-hero {
+    background:
+      linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.45) 50%, rgba(0, 0, 0, 0.1) 100%),
+      radial-gradient(60% 70% at 30% 50%, rgba(0, 0, 0, 0.35) 0%, #000 100%),
+      url("/images/37.png") center / cover no-repeat;
+  }
+
+  /* ---------- Tema "Vídeos": ajustes além dos tokens ---------- */
+  .video :is(h1, h2, h3),
+  .video .display {
+    font-family: var(--font-figtree), Figtree, sans-serif;
+  }
+  .video .display {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  /* Rótulo de seção vira o "kicker" dos vídeos */
+  .video .tag {
+    border-color: transparent;
+    padding-left: 0;
+    color: #1fe1a7;
+    font-family: var(--font-figtree), Figtree, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+  .video .bg-hero {
+    background: radial-gradient(1200px 800px at 50% 45%, #0f3a46 0%, #0b2e38 45%, #061c23 100%);
+  }
+  .video .ascii-bg {
+    background-color: #0b2e38;
+    background-image: radial-gradient(1100px 760px at 35% 40%, #0f3a46 0%, #0b2e38 50%, #061c23 100%);
+  }
+  .video ::selection {
+    color: #061c23;
+  }
+
+  /* Painel escuro de destaque (card de produto e missão) */
+  .panel-deep {
+    background: #022445; /* primary-900 */
+  }
+  .video .panel-deep {
+    background: radial-gradient(900px 600px at 30% 20%, #0f3a46 0%, #0b2e38 55%, #061c23 100%);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(126, 240, 212, 0.18);
+  }
+
+  /* ---------- OMNIX (identidade dos vídeos, igual em todos os temas) ---------- */
+  .omnix-bg {
+    background: radial-gradient(1200px 800px at 50% 30%, #0f3a46 0%, #0b2e38 45%, #061c23 100%);
+  }
+  .omnix-grad {
+    background: linear-gradient(100deg, #1fe1a7, #7ef0d4 60%, #1fe1a7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .omnix-card {
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(126, 240, 212, 0.18);
+  }
+  .omnix-float {
+    animation: omnix-float 4s ease-in-out infinite;
+  }
+  .omnix-shadow {
+    animation: omnix-shadow 4s ease-in-out infinite;
+  }
+  .omnix-blink {
+    opacity: 0;
+    animation: omnix-blink 5.2s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .omnix-float,
+    .omnix-shadow,
+    .omnix-blink {
+      animation: none;
+    }
+  }
+
+  /* Foto com degradê para o texto por cima (hero e formas de trabalhar) */
+  .photo-fade::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(2, 36, 69, 0.08) 25%, rgba(2, 36, 69, 0.93) 86%);
+  }
+  .video .photo-fade::after {
+    background:
+      linear-gradient(180deg, rgba(6, 28, 35, 0.1) 25%, rgba(6, 28, 35, 0.94) 86%),
+      linear-gradient(120deg, rgba(31, 225, 167, 0.22), transparent 55%);
+  }
+  .dark .photo-fade::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.92) 86%);
+  }
+
+  /* O aviso de cookies sai da frente enquanto uma janela (ex.: a política) está aberta */
+  body:has([role="dialog"][data-state="open"]) .cookie-banner {
+    display: none;
+  }
+
+  .section-y {
+    @apply py-20 md:py-28;
   }
 
   .g_fadeIn {
-    @apply opacity-0 translate-y-[100px];
-  }
-
-  .radial-gradient {
-    @apply bg-[radial-gradient(49.96%_49.96%_at_56.04%_50.04%,rgba(0,0,0,0)_0%,rgba(0,0,0,0.617797)_37.28%,rgba(0,0,0,0.773208)_59.65%,#000000_100%)];
+    @apply opacity-0 translate-y-[60px];
   }
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #919191;
-  border-radius: 10px;
-  padding: 2px;
+  background: var(--scrollbar-track);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #484848;
-  border-radius: 10px;
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #919191;
+@keyframes omnix-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes omnix-shadow {
+  0%, 100% { transform: scaleX(1); opacity: 0.55; }
+  50% { transform: scaleX(0.82); opacity: 0.35; }
+}
+@keyframes omnix-blink {
+  0%, 95.5%, 100% { opacity: 0; }
+  96.5%, 98.5% { opacity: 1; }
 }
