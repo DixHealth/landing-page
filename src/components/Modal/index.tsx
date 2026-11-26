@@ -1,5 +1,11 @@
 import React from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "../ui/dialog";
 
 interface Props {
   open: boolean;
@@ -16,11 +22,16 @@ export const Modal: React.FC<Props> = ({
 }) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-[#181818]  text-white border-none w-96 md:w-[950px]">
+      <DialogContent className="w-[calc(100%-2rem)] max-w-3xl">
         <DialogHeader>
-          <DialogTitle className="text-title-small">{title}</DialogTitle>
+          <DialogTitle className={title ? "" : "sr-only"}>
+            {title ?? "Detalhes"}
+          </DialogTitle>
+          <DialogDescription className="sr-only">
+            {title ?? "Detalhes"}
+          </DialogDescription>
         </DialogHeader>
-        <div className="max-h-[70vh] overflow-auto p-2">{children}</div>
+        <div className="max-h-[70vh] overflow-auto">{children}</div>
       </DialogContent>
     </Dialog>
   );

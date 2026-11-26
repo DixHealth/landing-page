@@ -1,95 +1,151 @@
 "use client";
 
-import { handleEmailButtonClick } from "@/utils";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import { smoothScroll } from "@/utils";
+import { contactLinks, contactPhones, pillars } from "@/data";
+import { Logo } from "../Logo";
+import { Modal } from "../Modal";
+import { PrivacyPolicy } from "../PrivacyPolicy";
+import { OPEN_COOKIES_EVENT, OPEN_PRIVACY_EVENT } from "../CookieConsent";
 
-const styleIcon =
-  "cursor-pointer w-10 h-10 rounded-full border border-secondary-400/20 flex items-center justify-center hover:border-secondary-400 transition-colors";
+const link = "transition-colors hover:text-fg";
+
+const Column = ({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) => (
+  <div>
+    <h3 className="text-body-small-semibold text-fg">{title}</h3>
+    <ul className="mt-4 space-y-2 text-body-small-regular text-fg-muted">
+      {children}
+    </ul>
+  </div>
+);
 
 export const Footer: React.FC = () => {
-  const handleNavigate = (link: string) => {
-    window.open(link, "_blank");
-  };
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+
+  // O aviso de cookies pede para abrir a política daqui.
+  useEffect(() => {
+    const open = () => setPrivacyOpen(true);
+    window.addEventListener(OPEN_PRIVACY_EVENT, open);
+    return () => window.removeEventListener(OPEN_PRIVACY_EVENT, open);
+  }, []);
 
   return (
-    <footer className="bg-black w-full text-white py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row  items-center justify-between md:items-start gap-8">
-          <div className="space-y-4 flex flex-col">
-            <Image
-              src="/logo/logo-white.svg"
-              alt="DIX"
-              width={100}
-              height={40}
-              quality={100}
-              className="h-10 w-auto"
-            />
-            <p className="text-body-small-regular text-neutral-500">
-              CNPJ: 39.336.761/0001-54
+    <footer className="w-full border-t border-border bg-bg pb-24 pt-16">
+      <div className="container">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
+          <div>
+            <Logo className="h-9 w-auto" />
+            <p className="mt-4 max-w-xs text-body-small-regular text-fg-muted">
+              Software house, cloud e produtos próprios para quem faz a saúde
+              funcionar.
             </p>
-            <div className="flex gap-4">
-              <a
-                onClick={() =>
-                  handleNavigate("https://www.linkedin.com/company/dixhealth/")
-                }
-                className={styleIcon}
-              >
-                <Image
-                  alt="linkedin"
-                  width={40}
-                  height={40}
-                  quality={100}
-                  src="/icon/linkedin.svg"
-                />
-                <span className="sr-only">LinkedIn</span>
-              </a>
-              <a
-                onClick={() =>
-                  handleNavigate("https://www.instagram.com/dixhealth/")
-                }
-                className={styleIcon}
-              >
-                <Image
-                  alt="instagram"
-                  width={40}
-                  height={40}
-                  quality={100}
-                  src="/icon/instagram.svg"
-                />
-
-                <span className="sr-only">Instagram</span>
-              </a>
-              <a onClick={handleEmailButtonClick} className={styleIcon}>
-                <Image
-                  alt="email"
-                  width={40}
-                  height={40}
-                  quality={100}
-                  src="/icon/email-2.svg"
-                />
-                <span className="sr-only">Email</span>
-              </a>
-            </div>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-subtitle-medium">Faça-nos uma visita!</h3>
-            <div className="flex items-start gap-2 max-w-md text-gray-400">
-              <Image
-                alt="map-pin"
-                width={25}
-                height={25}
-                quality={100}
-                src={"/icon/map-pin.svg"}
-              />
-              <p className="text-body-small-regular text-neutral-400">
-                Ed. Itaparica Top Business - Rod. do Sol, 2780 - Sala 908- Praia
-                de Itaparica, Vila Velha - ES
-              </p>
-            </div>
-          </div>
+          <Column title="Soluções">
+            {pillars.map((p) => (
+              <li key={p.link}>
+                <button className={link} onClick={() => smoothScroll(p.link)}>
+                  {p.label}
+                </button>
+              </li>
+            ))}
+          </Column>
+
+          <Column title="Empresa">
+            <li>
+              <button className={link} onClick={() => smoothScroll("about")}>
+                Sobre a Dix
+              </button>
+            </li>
+            <li>
+              <button className={link} onClick={() => smoothScroll("clients")}>
+                Clientes
+              </button>
+            </li>
+            <li>
+              <a
+                className={link}
+                href="https://www.linkedin.com/company/dixhealth/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                className={link}
+                href="https://www.instagram.com/dixhealth/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram
+              </a>
+            </li>
+          </Column>
+
+          <Column title="Contato">
+            {contactPhones.map((p) => (
+              <li key={p}>
+                <a className={link} href={`tel:+55${p.replace(/\D/g, "")}`}>
+                  {p}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                className={link}
+                href={contactLinks.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
+            </li>
+            <li>
+              <a className={link} href={contactLinks.email}>
+                E-mail
+              </a>
+            </li>
+            <li className="pt-2">
+              Rod. do Sol, 2780, Sala 908 — Praia de Itaparica, Vila Velha – ES
+            </li>
+          </Column>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-caption-regular text-fg-subtle sm:flex-row sm:justify-between">
+          <span>
+            © {new Date().getFullYear()} DixHealth · CNPJ 39.336.761/0001-54
+          </span>
+          <span className="flex flex-wrap gap-x-5 gap-y-2">
+            <button
+              className={link}
+              onClick={() => window.dispatchEvent(new Event(OPEN_COOKIES_EVENT))}
+            >
+              Preferências de cookies
+            </button>
+            <button className={link} onClick={() => setPrivacyOpen(true)}>
+              Política de Privacidade
+            </button>
+          </span>
         </div>
       </div>
+
+      <Modal
+        title="Política de Privacidade"
+        open={privacyOpen}
+        onOpenChange={setPrivacyOpen}
+      >
+        <div className="text-fg-muted">
+          <PrivacyPolicy />
+        </div>
+      </Modal>
     </footer>
   );
 };

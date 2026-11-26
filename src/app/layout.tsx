@@ -1,20 +1,29 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Urbanist } from "next/font/google";
+import { Figtree, Lato } from "next/font/google";
 import { ThemeProvider } from "./provider";
 import { Toaster } from "@/components/ui/toaster";
-import { Analytics } from "@vercel/analytics/react";
+import { CookieConsent } from "@/components/CookieConsent";
 
-const urbanist = Urbanist({
-  weight: ["400", "500", "600"],
+// Omni: família única Lato. O Google Fonts só tem 100/300/400/700/900;
+// os pesos 500/600 do sistema são aproximados pelo navegador.
+const lato = Lato({
+  weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
-  variable: "--font-urbanist",
+  variable: "--font-lato",
+});
+
+// Títulos na identidade dos vídeos (tema "Vídeos" e seção OMNIX).
+const figtree = Figtree({
+  weight: ["300", "600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--font-figtree",
 });
 
 export const metadata: Metadata = {
   title: "Dix Health",
   description:
-    "Especialista em Cloud, BI, integração de sistemas e desenvolvimento",
+    "Software house, cloud e produtos próprios para quem faz a saúde funcionar.",
 };
 
 export default function RootLayout({
@@ -23,20 +32,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={` ${urbanist.variable} antialiased`}>
+      <body className={`${lato.variable} ${figtree.variable}`}>
+        {/* Produção: identidade OMNIX (tema "video") fixa. */}
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="video"
+          forcedTheme="video"
+          themes={["light", "dark", "video"]}
+          enableSystem={false}
           disableTransitionOnChange
         >
+          <CookieConsent />
           {children}
           <Toaster />
-          <Analytics />
         </ThemeProvider>
       </body>
     </html>

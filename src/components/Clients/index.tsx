@@ -1,54 +1,48 @@
 "use client";
 
-import { clients } from "@/data";
 import React from "react";
-import { ClientCard } from "./ClientCard";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { clients } from "@/data";
 
 export const Clients: React.FC = () => {
   return (
-    <motion.section
-      id="#clients"
-      className="bg-black min-h-screen w-full common-padding flex flex-col justify-center items-center md:flex-row relative"
-      initial="hidden"
-      whileInView="visible"
-    >
-      <div
-        className="absolute inset-0 w-full h-full"
-        style={{
-          background: `radial-gradient(
-            40.6% 40.6% at 28.4% 46.87%,
-            rgba(0, 0, 0, 0) 0%,
-            #070707 100%
-          ), url('/images/37.png') center/cover no-repeat`,
-          opacity: 0.95,
-        }}
-      ></div>
-
-      <div className=" mx-auto max-w-7xl px-4 md:px-6 flex flex-col items-center md:flex-row relative z-10">
-        <motion.div className="w-full md:w-[50%] md:h-[70vh] md:px-20 flex flex-col justify-center md:items-start text-white">
-          <span className="gradient-text text-subtitle-medium font-normal md:font-semibold ">
-            NOSSOS CLIENTES
-          </span>
-          <h2
-            className="text-heading md:text-[64px] md:font-normal leading-tight"
-            id="title"
-          >
-            +200 <br /> projetos de sucesso
-          </h2>
-        </motion.div>
-
-        <div className="w-full md:w-[50%] h-auto flex flex-col items-start">
-          <h3 className="text-subtitle-medium text-neutral-500 mb-4 mt-4">
-            Principais Clientes
-          </h3>
-          <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-10 justify-center items-center">
-            {clients.map((client, idx) => (
-              <ClientCard client={client} index={idx} key={idx} />
-            ))}
+    <section id="clients" className="w-full bg-bg pb-6">
+      <div className="container">
+        <div className="rounded-xl border border-border bg-surface p-6 shadow-omni md:p-10">
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <div>
+              <span className="tag text-fg">Clientes</span>
+              <h2 className="display mt-4 text-[34px] leading-[1.08] text-fg md:text-[48px]">
+                Quem confia na Dix
+              </h2>
+            </div>
+            <p>
+              <span className="display block text-[44px] leading-none text-primary-900 dark:text-fg md:text-[56px]">
+                +250
+              </span>
+              <span className="mt-2 block text-body-small-regular text-fg-muted">projetos entregues</span>
+            </p>
           </div>
+
+          <ul className="mt-10 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-5">
+            {clients.map((client) => (
+              <li
+                key={client.name}
+                className="flex flex-col items-center gap-2 bg-surface px-3 py-5"
+              >
+                <Image
+                  width={64}
+                  height={64}
+                  src={client.logo}
+                  alt=""
+                  className="h-14 w-14 object-contain"
+                />
+                <span className="text-caption-regular text-fg-subtle">{client.name}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
