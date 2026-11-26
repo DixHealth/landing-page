@@ -260,12 +260,26 @@ export const PrivacyPolicy: React.FC = () => {
         (ANPD).
       </P>
 
-      <H>9. Segurança</H>
+      <H>9. Segurança e incidentes</H>
       <P>
         Adotamos medidas técnicas e administrativas para proteger os dados
         contra acesso não autorizado, perda ou alteração. Nenhum sistema é
-        totalmente seguro; se ocorrer um incidente que possa causar risco ou
-        dano relevante, comunicaremos você e a ANPD, como prevê a lei.
+        totalmente seguro, por isso temos um roteiro de resposta a
+        incidentes, acompanhado pelo encarregado:
+      </P>
+      <List
+        items={[
+          "contemos o problema e guardamos os registros do que aconteceu;",
+          "avaliamos quais dados e quantas pessoas foram afetados;",
+          "se houver risco ou dano relevante, comunicamos você e a ANPD no prazo definido pela regulamentação;",
+          "registramos o incidente e corrigimos a causa.",
+        ]}
+      />
+      <P>
+        Nos nossos produtos, os dados de pacientes pertencem às clínicas e
+        operadoras que nos contratam. Se um incidente envolver esses dados,
+        avisamos o cliente imediatamente, e é ele quem comunica os pacientes
+        e a ANPD.
       </P>
 
       <H>10. Crianças e adolescentes</H>
