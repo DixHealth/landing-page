@@ -64,7 +64,7 @@ export const Hero: React.FC = () => {
           <span className="rounded-full bg-[#1fe1a7] px-2.5 py-0.5 text-caption-bold uppercase tracking-[0.08em] text-[#061c23]">
             Novidade
           </span>
-          <span>Conheça a OMNIX, a IA da Dix</span>
+          <span>Conheça a OMNIX, a IA da DIX</span>
           <ArrowRight className="h-4 w-4 text-[#1fe1a7] transition-transform group-hover:translate-x-0.5" />
         </button>
 
@@ -75,7 +75,7 @@ export const Hero: React.FC = () => {
 
         <div className="mt-8 flex flex-wrap items-end justify-between gap-x-14 gap-y-7">
           <p className="max-w-xl text-subtitle-medium font-normal text-fg-muted">
-            A Dix entra onde a sua equipe de tecnologia não dá conta:
+            A DIX entra onde a sua equipe de tecnologia não dá conta:
             desenvolve junto, cuida da nuvem ou entrega o sistema pronto.
           </p>
           <CtaButton size="lg" whatsapp={whatsappMessages.hero}>
@@ -113,7 +113,7 @@ export const Hero: React.FC = () => {
             to="products"
             className="bg-secondary-100 text-primary-900 dark:bg-surface-raised dark:text-fg lg:col-span-7"
           >
-            <Kicker className="text-secondary-800 dark:text-accent">Produtos Dix</Kicker>
+            <Kicker className="text-secondary-800 dark:text-accent">Produtos DIX</Kicker>
             <span className={cn(cellTitle, "max-w-[8em]")}>OMNIDIX, DIXHub e DIXFlow</span>
             <Go className="mt-auto hidden lg:flex" />
             <span
@@ -178,7 +178,7 @@ export const Hero: React.FC = () => {
               ))}
             </span>
             <span className="mt-2 text-caption-regular text-fg-subtle lg:mt-3">
-              Quem confia na Dix
+              Quem confia na DIX
             </span>
             <b className="display mt-6 block text-[44px] leading-none tracking-[-0.05em] md:text-[58px] lg:mt-auto">
               +250

@@ -32,7 +32,7 @@ export const About: React.FC = () => {
     <section id="about" className="section-y w-full bg-bg">
       <div className="container grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
         <div>
-          <span className="tag text-fg">Sobre a Dix</span>
+          <span className="tag text-fg">Sobre a DIX</span>
           <h2 className="display mt-4 text-[34px] leading-[1.08] text-fg md:text-[48px]">
             Conheça nossa essência
           </h2>

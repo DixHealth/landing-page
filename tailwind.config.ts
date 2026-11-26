@@ -102,7 +102,7 @@ const config = {
     },
     fontFamily: {
       sans: ["var(--font-lato)", "Lato", "sans-serif"],
-      // Títulos dos vídeos da Dix / OMNIX
+      // Títulos dos vídeos da DIX / OMNIX
       display: ["var(--font-figtree)", "Figtree", "sans-serif"],
     },
     fontSize: {

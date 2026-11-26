@@ -9,7 +9,7 @@ import { OPEN_COOKIES_EVENT } from "../CookieConsent";
  * para quê, com qual base legal, com quem compartilha, por quanto tempo,
  * direitos do titular e canal de atendimento.
  *
- * REVISAR COM O JURÍDICO antes de publicar. Pontos que dependem da Dix:
+ * REVISAR COM O JURÍDICO antes de publicar. Pontos que dependem da DIX:
  *  - contrato e plano da Vercel (transferência internacional de dados).
  */
 
@@ -54,7 +54,7 @@ const DataWhatsApp = () => (
     rel="noopener noreferrer"
     className={linkClass}
   >
-    WhatsApp da Dix
+    WhatsApp da DIX
     <span className="sr-only"> (abre em nova aba)</span>
   </a>
 );
@@ -109,7 +109,7 @@ export const PrivacyPolicy: React.FC = () => {
       <List
         items={[
           <>
-            <B>Dados que você nos envia.</B> Quando você fala com a Dix pelo
+            <B>Dados que você nos envia.</B> Quando você fala com a DIX pelo
             WhatsApp, por e-mail ou por telefone, recebemos o seu nome, o
             telefone ou o e-mail usado e o conteúdo da mensagem. O site não
             tem formulário e não pede cadastro.

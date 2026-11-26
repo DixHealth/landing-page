@@ -28,7 +28,7 @@ export const Header: React.FC = () => {
       <div className="container flex h-20 items-center justify-between gap-6">
         <button
           onClick={() => smoothScroll("hero")}
-          aria-label="Dix Health — início"
+          aria-label="DIX Health — início"
           className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <Logo className="h-9 w-auto" />

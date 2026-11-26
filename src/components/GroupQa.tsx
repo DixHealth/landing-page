@@ -5,14 +5,14 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { groupCompanies } from "@/data";
 
-/** Fecho institucional: a Dix como parte do Grupo QA e as empresas do grupo. */
+/** Fecho institucional: a DIX como parte do Grupo QA e as empresas do grupo. */
 export const GroupQa: React.FC = () => {
   return (
     <section id="grupo" className="w-full bg-bg pb-20 md:pb-28">
       <div className="container">
         <span className="tag text-fg">Grupo QA</span>
         <h2 className="display mt-4 max-w-2xl text-[30px] leading-[1.08] text-fg md:text-[40px]">
-          A Dix faz parte do Grupo QA
+          A DIX faz parte do Grupo QA
         </h2>
         <p className="mt-3 max-w-xl text-body-medium-regular text-fg-muted">
           Conheça as outras empresas do grupo.
