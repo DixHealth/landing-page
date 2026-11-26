@@ -408,7 +408,6 @@ export const clients = [
   { name: "Valsa", logo: "/clients/valsa.png" },
   { name: "Clínica DOC", logo: "/clients/doc.png" },
   { name: "Mental Map", logo: "/clients/mentalmap.png" },
-  { name: "QA IT", logo: "/clients/qa.png" },
   { name: "Integra", logo: "/clients/integra.png" },
   { name: "Hemocord", logo: "/clients/hemocord.png" },
   { name: "Hemolab", logo: "/clients/hemolab.png" },

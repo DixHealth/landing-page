@@ -41,7 +41,7 @@ export const Header: React.FC = () => {
               <button
                 key={item.link}
                 onClick={() => smoothScroll(item.link)}
-                className="rounded-full px-4 py-2 text-link-small text-fg transition-colors hover:bg-surface-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="whitespace-nowrap rounded-full px-2.5 py-2 text-link-small lg:px-4 text-fg transition-colors hover:bg-surface-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 {item.label}
                 {item.isNew && (
