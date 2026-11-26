@@ -7,6 +7,7 @@ import { ArrowRight, X } from "lucide-react";
 import { omnixExtras, omnixSkills, whatsappLink, whatsappMessages } from "@/data";
 import { smoothScroll } from "@/utils";
 import { cn } from "@/lib/utils";
+import { OmnixBuddy } from "./OmnixBuddy";
 
 /**
  * OMNIX, a IA da DIX. A seção usa a identidade dos vídeos de lançamento
@@ -98,7 +99,7 @@ export const Omnix: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-end gap-4">
-              <OmnixMascot size={132} />
+              <OmnixBuddy size={132} />
               <div className="pb-5">
                 <span className="inline-flex items-center rounded-full bg-[#1fe1a7] px-3 py-1 font-display text-[12px] font-extrabold uppercase leading-none tracking-[0.14em] text-[#061c23]">
                   Novidade
