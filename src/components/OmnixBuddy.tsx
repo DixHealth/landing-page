@@ -26,7 +26,7 @@ type Bot = {
 };
 type Palette = { eyes: string[]; skins: string[]; exprs: string[] };
 
-const START: Look = { eye: "pupila", skin: "none", expr: "neutral", extras: [] };
+const START: Look = { eye: "original", skin: "none", expr: "neutral", extras: [] };
 const EXTRAS = ["contorno", "sobrancelha", "bochecha", "cilios"];
 const DROP_ACTS = ["comemorando", "sucesso", "pulinho", "batimento"];
 const DROP_ACT_MS = 2600;
