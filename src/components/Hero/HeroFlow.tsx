@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 const SOURCE_ICONS: LucideIcon[] = [MessageCircle, FlaskConical, NotebookPen];
 const INTERVAL = 5000;
 
-/** Diagrama ilustrativo: um sistema do cliente → Dix integra, organiza e entrega. */
+/** Diagrama ilustrativo: um sistema do cliente → DIX integra, organiza e entrega. */
 export const HeroFlow = () => {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -86,7 +86,7 @@ export const HeroFlow = () => {
         </div>
       </div>
 
-      {/* Fluxo Dix */}
+      {/* Fluxo DIX */}
       <div>
         <p className="mb-4 flex items-center gap-2 text-caption-bold uppercase tracking-[0.08em] text-accent">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />

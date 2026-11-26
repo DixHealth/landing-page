@@ -21,7 +21,7 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: "Dix Health",
+  title: "DIX Health",
   description:
     "Software house, cloud e produtos próprios para quem faz a saúde funcionar.",
 };

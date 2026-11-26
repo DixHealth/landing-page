@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
           <Column title="Empresa">
             <li>
               <button className={link} onClick={() => smoothScroll("about")}>
-                Sobre a Dix
+                Sobre a DIX
               </button>
             </li>
             <li>

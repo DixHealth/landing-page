@@ -11,7 +11,7 @@ export const navItems: { label: string; link: string; isNew?: boolean }[] = [
 export const pillars = [
   { label: "Software house", link: "dev" },
   { label: "Cloud", link: "cloud" },
-  { label: "Produtos Dix", link: "products" },
+  { label: "Produtos DIX", link: "products" },
 ];
 
 /** Seção "Software house". */
@@ -31,25 +31,25 @@ export const softwareHouse = {
   modes: [
     {
       title: "Projeto sob medida",
-      body: "Você traz o problema, a Dix entrega o sistema: do levantamento à produção.",
+      body: "Você traz o problema, a DIX entrega o sistema: do levantamento à produção.",
       image: "/site/projeto.jpg",
       position: "50% 50%",
     },
     {
       title: "Outsourcing",
-      body: "Profissionais da Dix trabalhando dentro do seu time, no seu processo.",
+      body: "Profissionais da DIX trabalhando dentro do seu time, no seu processo.",
       image: "/site/outsourcing.jpg",
       position: "50% 50%",
     },
     {
       title: "Reforço de equipe",
-      body: "Um time da Dix assume uma frente do backlog para desafogar os seus desenvolvedores.",
+      body: "Um time da DIX assume uma frente do backlog para desafogar os seus desenvolvedores.",
       image: "/site/reforco.jpg",
       position: "50% 30%",
     },
   ],
   built: [
-    // Vieram do artefato "Dix Linha de Cuidado"
+    // Vieram do artefato "DIX Linha de Cuidado"
     "Gateway de APIs",
     "Integrações entre sistemas de saúde",
     "Serviço de elegibilidade de beneficiários",
@@ -58,8 +58,8 @@ export const softwareHouse = {
     "Painel de chamadas",
     "Módulo de faturamento",
     "Registro eletrônico de saúde",
-    // Itens abaixo são exemplos do que a Dix desenvolve, não entregas
-    // confirmadas. Por isso o título da lista é "O que a Dix desenvolve".
+    // Itens abaixo são exemplos do que a DIX desenvolve, não entregas
+    // confirmadas. Por isso o título da lista é "O que a DIX desenvolve".
     // Só volte a dizer "já entregou" se a lista tiver apenas entregas reais.
     "Aplicativos para clínicas",
     "Marketplace de saúde",
@@ -169,7 +169,7 @@ export const heroScenarios: FlowScenario[] = [
 ];
 
 /**
- * OMNIX, a IA da Dix (seção de novidade). Textos alinhados aos roteiros dos
+ * OMNIX, a IA da DIX (seção de novidade). Textos alinhados aos roteiros dos
  * vídeos de lançamento; telas com dados fictícios.
  */
 export const omnixSkills = [
@@ -223,7 +223,7 @@ export const products = [
   {
     name: "OMNIDIX",
     tagline: "Atendimento, agenda e prontuário em um só lugar",
-    body: "A equipe responde, liga, agenda, atende por vídeo e registra o prontuário na mesma tela, com o apoio da OMNIX, a IA da Dix.",
+    body: "A equipe responde, liga, agenda, atende por vídeo e registra o prontuário na mesma tela, com o apoio da OMNIX, a IA da DIX.",
     // Mesma ordem das cenas da demonstração em vídeo.
     modules: ["WhatsApp", "Telefonia", "Agenda", "Videochamada", "Prontuário", "Acompanhamento"],
   },
@@ -350,13 +350,13 @@ export const whatsappLink = (message: string) =>
  * e sobre o que ela quer falar.
  */
 export const whatsappMessages = {
-  geral: "Olá! Vim pelo site da Dix e gostaria de falar com um especialista.",
-  hero: "Olá! Vim pelo site da Dix e quero entender como vocês podem ajudar a minha equipe de tecnologia.",
-  omnix: "Olá! Vi a OMNIX, a IA da Dix, no site e quero conhecer.",
-  softwareHouse: "Olá! Vim pelo site da Dix e quero falar sobre um projeto de desenvolvimento de software.",
-  cloud: "Olá! Vim pelo site da Dix e quero falar sobre migração e operação em nuvem.",
-  produto: (name: string) => `Olá! Vim pelo site da Dix e quero conhecer o ${name}.`,
-  fechamento: "Olá! Vim pelo site da Dix. Minha equipe está sem fôlego e quero falar com um especialista.",
+  geral: "Olá! Vim pelo site da DIX e gostaria de falar com um especialista.",
+  hero: "Olá! Vim pelo site da DIX e quero entender como vocês podem ajudar a minha equipe de tecnologia.",
+  omnix: "Olá! Vi a OMNIX, a IA da DIX, no site e quero conhecer.",
+  softwareHouse: "Olá! Vim pelo site da DIX e quero falar sobre um projeto de desenvolvimento de software.",
+  cloud: "Olá! Vim pelo site da DIX e quero falar sobre migração e operação em nuvem.",
+  produto: (name: string) => `Olá! Vim pelo site da DIX e quero conhecer o ${name}.`,
+  fechamento: "Olá! Vim pelo site da DIX. Minha equipe está sem fôlego e quero falar com um especialista.",
   dados: "Olá! Quero fazer um pedido sobre os meus dados pessoais (LGPD).",
 };
 
@@ -366,7 +366,7 @@ export const contactLinks = {
   email: `mailto:${contactEmail}?subject=${encodeURIComponent("Gostaria de mais informações")}`,
 };
 
-/** Empresas do Grupo QA, do qual a Dix faz parte (bloco no fim do site). */
+/** Empresas do Grupo QA, do qual a DIX faz parte (bloco no fim do site). */
 export const groupCompanies = [
   {
     name: "QA IT Answer",

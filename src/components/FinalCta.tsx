@@ -24,7 +24,7 @@ export const FinalCta: React.FC = () => {
               </h2>
               <p className="mt-4 max-w-md text-body-medium-regular text-primary-100/85 md:text-subtitle-medium md:font-normal">
                 Conte o que está travando a sua operação e fale com um
-                especialista da Dix.
+                especialista da DIX.
               </p>
             </div>
             <CtaButton

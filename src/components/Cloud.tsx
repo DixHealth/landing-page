@@ -23,7 +23,7 @@ export const Cloud: React.FC = () => {
               </h2>
             </div>
             <p className="max-w-lg text-subtitle-small font-normal text-primary-100/85 md:text-[19px] md:leading-[1.5]">
-              A Dix leva a sua operação para a nuvem e continua lá depois da
+              A DIX leva a sua operação para a nuvem e continua lá depois da
               migração, para que a infraestrutura deixe de ser preocupação da
               sua equipe.
             </p>
@@ -61,7 +61,7 @@ export const Cloud: React.FC = () => {
           </ul>
 
           <p className="mt-11 max-w-[25em] border-t border-white/15 pt-9 text-[22px] font-light leading-[1.22] tracking-[-0.02em] md:text-[32px]">
-            É a mesma infraestrutura que mantém os produtos da Dix no ar.{" "}
+            É a mesma infraestrutura que mantém os produtos da DIX no ar.{" "}
             <strong className="font-extrabold text-secondary-400">
               O que oferecemos para você, usamos em casa.
             </strong>

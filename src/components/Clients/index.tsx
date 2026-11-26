@@ -13,7 +13,7 @@ export const Clients: React.FC = () => {
             <div>
               <span className="tag text-fg">Clientes</span>
               <h2 className="display mt-4 text-[34px] leading-[1.08] text-fg md:text-[48px]">
-                Quem confia na Dix
+                Quem confia na DIX
               </h2>
             </div>
             <p>

@@ -9,7 +9,7 @@ import { smoothScroll } from "@/utils";
 import { cn } from "@/lib/utils";
 
 /**
- * OMNIX, a IA da Dix. A seção usa a identidade dos vídeos de lançamento
+ * OMNIX, a IA da DIX. A seção usa a identidade dos vídeos de lançamento
  * (teal escuro, verde-água, Figtree) em qualquer tema do site.
  * A mascote é um render do mesmo modelo 3D dos vídeos (public/omnix).
  */
@@ -111,7 +111,7 @@ export const Omnix: React.FC = () => {
                 OMNIX
               </span>
               <span className="mt-2 block text-[26px] font-semibold leading-tight text-[#e6f4f1] md:text-[34px]">
-                A IA da Dix
+                A IA da DIX
               </span>
             </h2>
 
@@ -134,9 +134,6 @@ export const Omnix: React.FC = () => {
                 Quero conhecer a OMNIX <ArrowRight className="h-4 w-4" />
                 <span className="sr-only"> (abre o WhatsApp em nova aba)</span>
               </a>
-              <span className="text-body-small-regular text-[#8aaaac]">
-                No OMNIDIX e em todos os sistemas Dix.
-              </span>
             </div>
           </motion.div>
 
@@ -154,7 +151,7 @@ export const Omnix: React.FC = () => {
                 preload="none"
                 poster="/omnix/omnix-lancamento-poster.jpg"
                 className="block aspect-video w-full"
-                aria-label="Vídeo de lançamento da OMNIX, a IA da Dix"
+                aria-label="Vídeo de lançamento da OMNIX, a IA da DIX"
               >
                 <source src="/omnix/omnix-lancamento.mp4" type="video/mp4" />
                 <track
@@ -166,10 +163,6 @@ export const Omnix: React.FC = () => {
                 />
               </video>
             </div>
-            <figcaption className="mt-3 flex flex-wrap justify-between gap-2 text-caption-regular text-[#8aaaac]">
-              <span>Assista à apresentação da OMNIX (1 min 37 s, com som e legendas).</span>
-              <span>Imagens ilustrativas. Dados fictícios.</span>
-            </figcaption>
           </motion.figure>
         </div>
 
@@ -273,7 +266,7 @@ export const OmnixCorner: React.FC = () => {
       <button
         onClick={() => smoothScroll("omnix")}
         tabIndex={visible ? 0 : -1}
-        aria-label="Conheça a OMNIX, a IA da Dix"
+        aria-label="Conheça a OMNIX, a IA da DIX"
         className="flex items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         <span className="pointer-events-none rounded-xl border border-[#c9efe1] bg-[#eefaf5] px-3 py-2 text-body-small-semibold text-[#0b2e38] opacity-0 shadow-menu transition-opacity group-focus-within:opacity-100 group-hover:opacity-100">

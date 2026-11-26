@@ -2,7 +2,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
- * Logo Dix: versão colorida no tema claro, branca nos temas escuros.
+ * Logo DIX: versão colorida no tema claro, branca nos temas escuros.
  * Troca por CSS (sem depender do tema no JS) para não piscar na hidratação.
  */
 export const Logo = ({
@@ -16,7 +16,7 @@ export const Logo = ({
     {!forceWhite && (
       <Image
         src="/logo/logo.svg"
-        alt="Dix Health"
+        alt="DIX Health"
         width={87}
         height={39}
         priority
@@ -25,7 +25,7 @@ export const Logo = ({
     )}
     <Image
       src="/logo/logo-white.svg"
-      alt="Dix Health"
+      alt="DIX Health"
       width={88}
       height={39}
       priority

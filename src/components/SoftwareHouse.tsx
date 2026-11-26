@@ -26,12 +26,12 @@ export const SoftwareHouse: React.FC = () => {
           </div>
           <p className="max-w-lg text-subtitle-small font-normal text-fg-muted md:text-[19px] md:leading-[1.5]">
             Falta gente, o backlog cresce e a equipe interna vive apagando
-            incêndio. A Dix assume parte do desenvolvimento para a sua equipe
+            incêndio. A DIX assume parte do desenvolvimento para a sua equipe
             respirar e voltar ao que só ela sabe fazer.
           </p>
         </div>
 
-        {/* Como costuma estar → com a Dix */}
+        {/* Como costuma estar → com a DIX */}
         <div className="relative mt-12 grid gap-3.5 md:grid-cols-2">
           <div className="rounded-[26px] border border-border bg-surface px-7 pb-3.5 pt-7">
             <h3 className="text-body-medium-semibold font-bold text-fg-muted">
@@ -51,7 +51,7 @@ export const SoftwareHouse: React.FC = () => {
           </div>
           <div className="panel-deep rounded-[26px] px-7 pb-3.5 pt-7 text-white">
             <h3 className="text-body-medium-semibold font-bold text-secondary-400">
-              Com a Dix
+              Com a DIX
             </h3>
             <ul className="mt-2.5">
               {after.map((t) => (
@@ -75,7 +75,7 @@ export const SoftwareHouse: React.FC = () => {
 
         {/* Três formas de trabalhar: painéis que expandem */}
         <h3 className="mt-16 text-body-medium-semibold font-bold text-fg">
-          Três formas de trabalhar com a Dix
+          Três formas de trabalhar com a DIX
         </h3>
         <div className="mt-4 flex flex-col gap-3 lg:h-[460px] lg:flex-row">
           {modes.map((m, i) => {
@@ -125,7 +125,7 @@ export const SoftwareHouse: React.FC = () => {
         <div className="mt-16 grid gap-5 border-t-2 border-fg pt-8 lg:grid-cols-[0.8fr_1.6fr] lg:gap-14">
           <div>
             <h3 className="display text-[28px] leading-[1.06] text-fg md:text-[36px]">
-              O que a Dix{" "}
+              O que a DIX{" "}
               <span className="font-light text-fg-muted">desenvolve</span>
             </h3>
             <a
