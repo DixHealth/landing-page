@@ -45,6 +45,13 @@ export const Footer: React.FC = () => {
               Software house, cloud e produtos próprios para quem faz a saúde
               funcionar.
             </p>
+            <p className="mt-3 text-body-small-regular text-fg-muted">
+              Uma empresa do{" "}
+              <button className={link} onClick={() => smoothScroll("grupo")}>
+                Grupo QA
+              </button>
+              .
+            </p>
           </div>
 
           <Column title="Soluções">
@@ -121,7 +128,13 @@ export const Footer: React.FC = () => {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-caption-regular text-fg-subtle sm:flex-row sm:justify-between">
           <span>
-            © {new Date().getFullYear()} DixHealth · CNPJ 39.336.761/0001-54
+            © {new Date().getFullYear()} Dixhealth Desenvolvimento e Manutenção de Sistemas de Tecnologia LTDA · CNPJ 39.336.761/0001-54
+            <span className="mt-1 block">
+              Encarregado de dados (DPO): HDPO - Consultoria LTDA, representada por João Gonçalves ·{" "}
+              <a className={link} href="mailto:joaogoncalves@hdpo.com.br">
+                joaogoncalves@hdpo.com.br
+              </a>
+            </span>
           </span>
           <span className="flex flex-wrap gap-x-5 gap-y-2">
             <button
@@ -131,14 +144,14 @@ export const Footer: React.FC = () => {
               Preferências de cookies
             </button>
             <button className={link} onClick={() => setPrivacyOpen(true)}>
-              Política de Privacidade
+              Privacidade e Termos de Uso
             </button>
           </span>
         </div>
       </div>
 
       <Modal
-        title="Política de Privacidade"
+        title="Privacidade e Termos de Uso"
         open={privacyOpen}
         onOpenChange={setPrivacyOpen}
       >

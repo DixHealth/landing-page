@@ -357,6 +357,7 @@ export const whatsappMessages = {
   cloud: "Olá! Vim pelo site da Dix e quero falar sobre migração e operação em nuvem.",
   produto: (name: string) => `Olá! Vim pelo site da Dix e quero conhecer o ${name}.`,
   fechamento: "Olá! Vim pelo site da Dix. Minha equipe está sem fôlego e quero falar com um especialista.",
+  dados: "Olá! Quero fazer um pedido sobre os meus dados pessoais (LGPD).",
 };
 
 export const contactEmail = "relacionamento@dixhealth.com.br";
@@ -364,6 +365,42 @@ export const contactLinks = {
   whatsapp: whatsappLink(whatsappMessages.geral),
   email: `mailto:${contactEmail}?subject=${encodeURIComponent("Gostaria de mais informações")}`,
 };
+
+/** Empresas do Grupo QA, do qual a Dix faz parte (bloco no fim do site). */
+export const groupCompanies = [
+  {
+    name: "QA IT Answer",
+    body: "Serviços e outsourcing de TI.",
+    logo: "/grupo/qa.png",
+    w: 540,
+    h: 430,
+    url: "https://qac.com.br/",
+  },
+  {
+    name: "HDPO Gestão e Conformidade",
+    body: "Encarregado de dados (DPO) como serviço e programas de privacidade.",
+    logo: "/grupo/hdpo.png",
+    w: 141,
+    h: 49,
+    url: "https://hdpo.com.br/",
+  },
+  {
+    name: "Grupo SSIT",
+    body: "Cibersegurança e governança de segurança da informação.",
+    logo: "/grupo/ssit.png",
+    w: 900,
+    h: 126,
+    url: "https://grupossit.com.br/",
+  },
+  {
+    name: "PROTEGON",
+    body: "Plataforma para gestão da LGPD.",
+    logo: "/grupo/protegon.png",
+    w: 1000,
+    h: 247,
+    url: "https://www.protegon.com.br/",
+  },
+];
 
 export const clients = [
   { name: "ArcelorMittal", logo: "/clients/arcelor.png" },
