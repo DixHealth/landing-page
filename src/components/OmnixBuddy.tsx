@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { OmnixMascot } from "./Omnix";
 
 /**
@@ -12,7 +12,8 @@ import { OmnixMascot } from "./Omnix";
  * - um clique sorteia um visual da paleta do provador: estilo de olho,
  *   detalhes do rosto, acessório e expressão;
  * - pode ser arrastada para qualquer lugar do site e, ao ser solta,
- *   quica e faz uma ação (comemora, confirma, pula ou bate o coração).
+ *   quica e faz uma ação (comemora, confirma, pula ou bate o coração);
+ * - um balão de fala fica convidando a clicar e a arrastar.
  *
  * O three.js só é baixado quando a seção chega perto da tela. Até lá (e se
  * o WebGL não estiver disponível) aparece o render estático da mascote.
@@ -30,6 +31,10 @@ const START: Look = { eye: "original", skin: "none", expr: "neutral", extras: []
 const EXTRAS = ["contorno", "sobrancelha", "bochecha", "cilios"];
 const DROP_ACTS = ["comemorando", "sucesso", "pulinho", "batimento"];
 const DROP_ACT_MS = 2600;
+/** Falas do balão, alternadas a cada SPEECH_MS. */
+const SPEECH = ["Clique em mim e veja o que acontece!", "Pode me arrastar pelo site também!"];
+const SPEECH_MS = 4200;
+const BUBBLE_W = 176;
 
 const pick = <T,>(list: T[]) => list[Math.floor(Math.random() * list.length)];
 
@@ -75,6 +80,12 @@ export const OmnixBuddy = ({ size = 132 }: { size?: number }) => {
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
   const [dragging, setDragging] = useState(false);
   const drag = useRef<{ px: number; py: number; x: number; y: number; moved: boolean } | null>(null);
+
+  const [speech, setSpeech] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setSpeech((i) => (i + 1) % SPEECH.length), SPEECH_MS);
+    return () => clearInterval(id);
+  }, []);
 
   const height = size * 1.12;
   const canvasSize = size * CANVAS_SCALE;
@@ -318,6 +329,45 @@ export const OmnixBuddy = ({ size = 132 }: { size?: number }) => {
     }
   };
 
+  // Balão à direita da mascote; vira para a esquerda se ela estiver na borda direita.
+  const bubbleFlip =
+    !!pos && pos.x + size * 0.86 + BUBBLE_W > document.documentElement.clientWidth - 8;
+  const bubble = (
+    <span
+      aria-hidden
+      className="pointer-events-none absolute z-10 block"
+      style={{
+        top: size * 0.04,
+        width: BUBBLE_W,
+        ...(bubbleFlip ? { right: size * 0.86 } : { left: size * 0.86 }),
+      }}
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        {!dragging && (
+          <motion.span
+            key={speech}
+            initial={reduceMotion ? false : { opacity: 0, y: 6, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -4, scale: 0.96 }}
+            transition={{ duration: 0.22 }}
+            className={
+              "relative block w-fit rounded-[14px] bg-[#e6f4f1] px-3 py-2 text-left font-display text-[13px] font-bold leading-snug text-[#061c23] shadow-[0_6px_20px_rgba(0,0,0,0.25)] " +
+              (bubbleFlip ? "ml-auto" : "")
+            }
+          >
+            {SPEECH[speech]}
+            <span
+              className={
+                "absolute bottom-2 block h-2.5 w-2.5 rotate-45 bg-[#e6f4f1] " +
+                (bubbleFlip ? "-right-1" : "-left-1")
+              }
+            />
+          </motion.span>
+        )}
+      </AnimatePresence>
+    </span>
+  );
+
   const buddy = (
     <button
       ref={boxRef}
@@ -327,7 +377,7 @@ export const OmnixBuddy = ({ size = 132 }: { size?: number }) => {
       onPointerDown={onPointerDown}
       onKeyDown={onKeyDown}
       className={
-        "relative block touch-none select-none rounded-3xl outline-none focus-visible:ring-2 focus-visible:ring-[#7ef0d4] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b2e38] " +
+        "relative block touch-none select-none rounded-[24px] outline-none focus-visible:ring-2 focus-visible:ring-[#7ef0d4] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b2e38] " +
         (dragging ? "cursor-grabbing" : "cursor-grab")
       }
       style={{ width: size, height }}
@@ -371,6 +421,7 @@ export const OmnixBuddy = ({ size = 132 }: { size?: number }) => {
           opacity: dragging ? 0 : undefined,
         }}
       />
+      {bubble}
     </button>
   );
 
