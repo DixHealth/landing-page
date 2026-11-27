@@ -1,6 +1,6 @@
 # DixHealth Website
 
-Welcome to the DixHealth website repository. This project is built using [Next.js](https://nextjs.org), a powerful React framework designed for scalable and modern web applications
+Welcome to the DixHealth website repository. This project is built using [Next.js](https://nextjs.org), a powerful React framework designed for scalable and modern web applications.
 
 ## Features
 
